@@ -8,6 +8,7 @@
 
 #import "ChoiceViewController.h"
 #import "ChoiceCell.h"
+#import "DetailViewController.h"
 
 @interface ChoiceViewController ()
 
@@ -71,7 +72,6 @@
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(ChoiceCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    SelectionCell *cell = [[SelectionCell alloc] init];
     CATransform3D rotation;//3D旋转
     
     rotation = CATransform3DMakeTranslation(0 ,50 ,20);
@@ -92,17 +92,16 @@
     cell.alpha = 1;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
     [UIView commitAnimations];
-    
-    //    [cell cellOffset];
     cell.model = _dataArray[indexPath.row];
-    
-    
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DetailViewController *detail = [[DetailViewController alloc] init];
+    detail.model = _dataArray[indexPath.row];
     
+    [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -10,9 +10,9 @@
 
 @implementation ChoicModel
 
-//+ (JSONKeyMapper *)keyMapper
-//{
-//    return [[JSONKeyMapper alloc] initWithDictionary:@{@"videoList.title":@"title",@"videoList.description":@"mydescription",@"videoList.category":@"category",@"videoList.playUrl":@"playUrl",@"videoList.duration":@"duration",@"videoList.coverForFeed":@"coverForFeed"}];
-//}
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"description":@"my_description"}];
+}
 
 @end

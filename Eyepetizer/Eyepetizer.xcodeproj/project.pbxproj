@@ -155,6 +155,7 @@
 		BCEE87571C9C1C560031B6C0 /* progress_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCEE86F01C9C1C560031B6C0 /* progress_white@2x.png */; };
 		BCEE87581C9C1C560031B6C0 /* Radial.png in Resources */ = {isa = PBXBuildFile; fileRef = BCEE86F11C9C1C560031B6C0 /* Radial.png */; };
 		BCEE87591C9C1C560031B6C0 /* Splash_BKG.png in Resources */ = {isa = PBXBuildFile; fileRef = BCEE86F21C9C1C560031B6C0 /* Splash_BKG.png */; };
+		BCEE875C1C9C26560031B6C0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE875B1C9C26560031B6C0 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -375,6 +376,8 @@
 		BCEE86F01C9C1C560031B6C0 /* progress_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress_white@2x.png"; sourceTree = "<group>"; };
 		BCEE86F11C9C1C560031B6C0 /* Radial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radial.png; sourceTree = "<group>"; };
 		BCEE86F21C9C1C560031B6C0 /* Splash_BKG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash_BKG.png; sourceTree = "<group>"; };
+		BCEE875A1C9C26560031B6C0 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BCEE875B1C9C26560031B6C0 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +527,8 @@
 				BCEE85C91C9BDACE0031B6C0 /* AppDelegate.m */,
 				BCEE86041C9BE8960031B6C0 /* RootViewController.h */,
 				BCEE86051C9BE8960031B6C0 /* RootViewController.m */,
+				BCEE875A1C9C26560031B6C0 /* DetailViewController.h */,
+				BCEE875B1C9C26560031B6C0 /* DetailViewController.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -1033,6 +1038,7 @@
 				BCEE86091C9BECFE0031B6C0 /* CHNetWorking.m in Sources */,
 				BCEE865E1C9BF0950031B6C0 /* AFSecurityPolicy.m in Sources */,
 				BCEE86701C9BF0950031B6C0 /* SDWebImageCompat.m in Sources */,
+				BCEE875C1C9C26560031B6C0 /* DetailViewController.m in Sources */,
 				BCEE86731C9BF0950031B6C0 /* SDWebImageDownloaderOperation.m in Sources */,
 				BCEE866B1C9BF0950031B6C0 /* JSONKeyMapper.m in Sources */,
 				BCEE85CA1C9BDACE0031B6C0 /* AppDelegate.m in Sources */,

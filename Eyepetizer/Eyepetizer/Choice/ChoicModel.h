@@ -15,7 +15,8 @@
 @property (nonatomic, copy) NSString<Optional> *duration;
 @property (nonatomic, copy) NSString<Optional> *playUrl;
 @property (nonatomic, copy) NSString<Optional> *coverForFeed;
-@property (nonatomic, copy) NSString<Optional> *mydescription;
+@property (nonatomic, copy) NSString<Optional> *my_description;
+@property (nonatomic, copy) NSString<Optional> *coverBlurred;
 
 
 @end
