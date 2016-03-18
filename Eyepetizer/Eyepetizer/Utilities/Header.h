@@ -10,8 +10,16 @@
 #define Header_h
 
 
+#pragma mark - 头文件
+#import "CHNetWorking.h"
+#import "RootViewController.h"
+
+
+#pragma mark - 系统相关
+
+
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight [UIScreen mainScreen].bounds.size.Height
+#define kScreenHeight  [UIScreen mainScreen].bounds.size.height
 
 #pragma mark - 网页相关
 

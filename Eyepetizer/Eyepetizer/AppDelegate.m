@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ChoiceViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,8 +18,30 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor clearColor];
+    [self.window makeKeyAndVisible];
+    [self configUI];
     
     return YES;
+}
+
+- (void)configUI
+{
+    NSArray *className = @[@"ChoiceViewController"];
+    NSArray *titles = @[@"每日精选"];
+    NSMutableArray *arrayM = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < className.count; i++) {
+        
+        Class class = NSClassFromString(className[i]);
+        UIViewController *vc = [[class alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        nav.tabBarItem.title = titles[i];
+        [arrayM addObject:nav];
+    }
+    UITabBarController *tab = [[UITabBarController alloc] init];
+    tab.viewControllers = arrayM;
+    self.window.rootViewController = tab;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
