@@ -9,6 +9,8 @@
 #import "ChoiceViewController.h"
 #import "ChoiceCell.h"
 #import "DetailViewController.h"
+#import "JHTableViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface ChoiceViewController ()
 
@@ -25,7 +27,7 @@
 - (void)configUI
 {
     [super configUI];
-    [_tableView registerNib:[UINib nibWithNibName:@"ChoiceCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
 - (void)loadData
@@ -38,7 +40,6 @@
         NSArray *array = responseObject[@"dailyList"];
         for (NSDictionary *dict in array) {
             NSArray *array2 = [ChoicModel arrayOfModelsFromDictionaries:dict[@"videoList"]];
-            NSLog(@"+++++%@",dict[@"videoList"]);
             [_dataArray addObjectsFromArray:array2];
         }
         [_tableView reloadData];
@@ -62,12 +63,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellId = @"cell";
-    ChoiceCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    cell.model = _dataArray[indexPath.row];
-    NSLog(@"+++++%@",cell.model);
+    JHTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    ChoicModel *model = _dataArray[indexPath.row];
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:model.coverForFeed]];
+    cell.titleL.text = model.title;
+    cell.cWithTL.text = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
     return cell;
 }
-- (void)tableView:(UITableView *)tableView willDisplayCell:(ChoiceCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(JHTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CATransform3D rotation;//3D旋转
     
@@ -89,7 +96,7 @@
     cell.alpha = 1;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
     [UIView commitAnimations];
-    cell.model = _dataArray[indexPath.row];
+//    cell.model = _dataArray[indexPath.row];
 }
 
 

@@ -13,11 +13,12 @@
 #pragma mark - 头文件
 #import "CHNetWorking.h"
 #import "RootViewController.h"
+#import "Masonry.h"
 
 
 #pragma mark - 系统相关
 
-
+#define KWS(ws) __weak typeof(&*self) ws=self
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight  [UIScreen mainScreen].bounds.size.height
 
