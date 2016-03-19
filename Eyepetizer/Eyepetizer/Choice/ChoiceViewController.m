@@ -35,15 +35,12 @@
     NSDate *date = [[NSDate alloc] init];
     NSString *dateString = [dateFormatter stringFromDate:date];
     [[CHNetWorking shareManager] requestData:[NSString stringWithFormat:kChoice,dateString] parameters:nil sucBlock:^(id responseObject) {
-//        NSLog(@"%@",responseObject);
         NSArray *array = responseObject[@"dailyList"];
         for (NSDictionary *dict in array) {
             NSArray *array2 = [ChoicModel arrayOfModelsFromDictionaries:dict[@"videoList"]];
             NSLog(@"+++++%@",dict[@"videoList"]);
             [_dataArray addObjectsFromArray:array2];
         }
-        NSLog(@"Count:%ld",_dataArray.count);
-        
         [_tableView reloadData];
     } failureBlock:^{
         

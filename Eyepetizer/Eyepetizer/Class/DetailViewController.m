@@ -8,8 +8,12 @@
 
 #import "DetailViewController.h"
 #import "UIImageView+WebCache.h"
+#import "KRVideoPlayerController.h"
+#import "PlayerViewController.h"
 
 @interface DetailViewController ()
+
+
 
 @end
 
@@ -65,18 +69,21 @@
     label3.font = [UIFont systemFontOfSize:19];
     label3.lineBreakMode = NSLineBreakByCharWrapping;
 //    label3.backgroundColor = [UIColor redColor];
-    NSLog(@"%@",_model.my_description);
     label3.numberOfLines = 0;
     [bgImage addSubview:label3];
-    
-    
     
 }
 
 - (void)btnClick:(UIButton *)sender
 {
-    NSLog(@"btnClick:%@",_model.playUrl);
-    
+    PlayerViewController *player = [[PlayerViewController alloc] init];
+    NSURL *url = [NSURL URLWithString:_model.playUrl];
+    player.url = url;
+    player.imageUrl = _model.coverBlurred;
+    [self presentViewController:player animated:YES completion:^{
+        
+    }];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
