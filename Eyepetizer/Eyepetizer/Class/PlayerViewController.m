@@ -56,7 +56,6 @@
         [_videoController setDimissCompleteBlock:^{
             ws.videoController = nil;
         }];
-//        _videoController.fullscreen = YES;
         [_videoController showInWindow];
     }
     _videoController.contentURL = url;

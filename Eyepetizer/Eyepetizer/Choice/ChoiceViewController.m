@@ -33,17 +33,17 @@
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyyMMdd"];
-    NSDate *date = [[NSDate alloc] init];
-    NSString *dateString = [dateFormatter stringFromDate:date];
+    NSDate *date                   = [[NSDate alloc] init];
+    NSString *dateString           = [dateFormatter stringFromDate:date];
     [[CHNetWorking shareManager] requestData:[NSString stringWithFormat:kChoice,dateString] parameters:nil sucBlock:^(id responseObject) {
-        NSArray *array = responseObject[@"dailyList"];
+    NSArray *array                 = responseObject[@"dailyList"];
         for (NSDictionary *dict in array) {
-            NSArray *array2 = [ChoicModel arrayOfModelsFromDictionaries:dict[@"videoList"]];
+    NSArray *array2                = [ChoicModel arrayOfModelsFromDictionaries:dict[@"videoList"]];
             [_dataArray addObjectsFromArray:array2];
         }
         [_tableView reloadData];
     } failureBlock:^{
-        
+
     }];
 }
 
@@ -61,22 +61,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellId = @"cell";
-    JHTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    static NSString *cellId        = @"cell";
+    JHTableViewCell *cell          = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
-        cell = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    cell                           = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    ChoicModel *model = _dataArray[indexPath.row];
+    ChoicModel *model              = _dataArray[indexPath.row];
     [cell.imageV sd_setImageWithURL:[NSURL URLWithString:model.coverForFeed]];
-    cell.titleL.text = model.title;
-    cell.cWithTL.text = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
+    cell.titleL.text               = model.title;
+    cell.cWithTL.text              = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailViewController *detail = [[DetailViewController alloc] init];
-    detail.model = _dataArray[indexPath.row];
+    DetailViewController *detail   = [[DetailViewController alloc] init];
+    ChoicModel *model              = _dataArray[indexPath.row];
+    detail.detailTitle             = model.title;
+    detail.detailCategory          = model.category;
+    detail.detailPlayUrl           = model.playUrl;
+    detail.detailDuration          = model.duration;
+    detail.detailCoverBlurred      = model.coverBlurred;
+    detail.detailCoverForFeed      = model.coverForFeed;
+    detail.detailDescription       = model.my_description;
     
     [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];

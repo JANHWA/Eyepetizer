@@ -29,7 +29,7 @@
 - (void)configUI
 {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 300)];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[_model coverForFeed]]];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:_detailCoverForFeed]];
      [self.view addSubview:imageView];
     
     imageView.userInteractionEnabled = YES;
@@ -41,12 +41,12 @@
     
     // 创建底部背景图
     UIImageView *bgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64 + 300, kScreenWidth, kScreenHeight - 64 - 300)];
-    [bgImage sd_setImageWithURL:[NSURL URLWithString:_model.coverBlurred]];
+    [bgImage sd_setImageWithURL:[NSURL URLWithString:_detailCoverBlurred]];
     [self.view addSubview:bgImage];
     
     // 创建标题
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, kScreenWidth - 20, 30)];
-    label.text = _model.title;
+    label.text = _detailTitle;
     label.font = [UIFont systemFontOfSize:18];
     label.textColor = [UIColor colorWithRed:0.909 green:0.912 blue:0.921 alpha:1.000];
     [bgImage addSubview:label];
@@ -58,13 +58,13 @@
     
     // 创建类型及时长
     UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 41, kScreenWidth, 30)];
-    label2.text = [NSString stringWithFormat:@"#%@ / %@\"",_model.category,_model.duration];
+    label2.text = [NSString stringWithFormat:@"#%@ / %@\"",_detailCategory,_detailDuration];
     label2.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.82 alpha:1];
     [bgImage addSubview:label2];
     
     // 创建描述label
     UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 65, kScreenWidth-15-15, 180)];
-    label3.text = _model.my_description;
+    label3.text = _detailDescription;
     label3.textColor = [UIColor colorWithRed:0.856 green:0.855 blue:0.874 alpha:1.000];
     label3.font = [UIFont systemFontOfSize:19];
     label3.lineBreakMode = NSLineBreakByCharWrapping;
@@ -77,9 +77,9 @@
 - (void)btnClick:(UIButton *)sender
 {
     PlayerViewController *player = [[PlayerViewController alloc] init];
-    NSURL *url = [NSURL URLWithString:_model.playUrl];
+    NSURL *url = [NSURL URLWithString:_detailPlayUrl];
     player.url = url;
-    player.imageUrl = _model.coverBlurred;
+    player.imageUrl = _detailCoverBlurred;
     [self presentViewController:player animated:YES completion:^{
         
     }];

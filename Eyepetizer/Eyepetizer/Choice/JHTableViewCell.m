@@ -15,32 +15,30 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    
+
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self                   = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
         KWS(ws);
         // 初始化背景视图
-        _imageV = [[UIImageView alloc] init];
-        _imageV.contentMode = UIViewContentModeScaleAspectFill;
+    _imageV                = [[UIImageView alloc] init];
+    _imageV.contentMode    = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:_imageV];
-       
+
         [_imageV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(ws.contentView.mas_top).offset(0);
             make.left.equalTo(ws.contentView.mas_left).offset(0);
             make.bottom.equalTo(ws.contentView.mas_bottom).offset(0);
             make.right.equalTo(ws.contentView.mas_right).offset(0);
         }];
-        
         // 标题
-        _titleL = [[UILabel alloc] init];
-        _titleL.textAlignment = NSTextAlignmentCenter;
-        _titleL.font = [UIFont systemFontOfSize:20];
-        _titleL.textColor = [UIColor colorWithRed:0.99 green:0.99 blue:1 alpha:1];
+    _titleL                = [[UILabel alloc] init];
+    _titleL.textAlignment  = NSTextAlignmentCenter;
+    _titleL.font           = [UIFont systemFontOfSize:20];
+    _titleL.textColor      = [UIColor colorWithRed:0.99 green:0.99 blue:1 alpha:1];
         [self.contentView addSubview:_titleL];
         [_titleL mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(ws.contentView.mas_top).offset(90);
@@ -49,24 +47,20 @@
             make.right.equalTo(ws.contentView.mas_right).offset(0);
         }];
         // 分类和时间
-        _cWithTL = [[UILabel alloc] init];
-        _cWithTL.textAlignment = NSTextAlignmentCenter;
-        _cWithTL.font = [UIFont systemFontOfSize:18];
-        _cWithTL.textColor = [UIColor colorWithRed:0.99 green:0.99 blue:1 alpha:1];
+    _cWithTL               = [[UILabel alloc] init];
+    _cWithTL.textAlignment = NSTextAlignmentCenter;
+    _cWithTL.font          = [UIFont systemFontOfSize:18];
+    _cWithTL.textColor     = [UIColor colorWithRed:0.99 green:0.99 blue:1 alpha:1];
         [self.contentView addSubview:_cWithTL];
         [_cWithTL mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(ws.contentView.mas_top).offset(125);
             make.left.equalTo(ws.contentView.mas_left).offset(0);
             make.bottom.equalTo(ws.contentView.mas_bottom).offset(-95);
             make.right.equalTo(ws.contentView.mas_right).offset(0);
-            
         }];
-
     }
     return self;
 }
-
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

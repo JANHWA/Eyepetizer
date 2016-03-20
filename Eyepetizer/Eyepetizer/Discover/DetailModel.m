@@ -10,12 +10,5 @@
 
 @implementation DetailModel
 
-//+ (JSONKeyMapper *)keyMapper
-//{
-////    return [[JSONKeyMapper alloc] initWithDictionary:@{@"description":@"my_description"}];
-//    return [[JSONKeyMapper alloc] initWithDictionary:@{@"description":@"my_description",@"cover.feed":@"feed",@"cover.blurred":@"blurred"}];
-//}
-
-
 
 @end

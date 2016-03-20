@@ -34,16 +34,16 @@
         return @{@"my_description":@"description",@"feed":@"cover.feed",@"blurred":@"cover.blurred"};
     }];
     NSString *urlString = [NSString stringWithFormat:kCategory,_url];
-    NSString *url = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *url       = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[CHNetWorking shareManager] requestData:url parameters:nil sucBlock:^(id responseObject) {
-        NSArray *array = responseObject[@"itemList"];
+    NSArray *array      = responseObject[@"itemList"];
         for (NSDictionary *dict in array) {
-            DetailModel *model = [DetailModel mj_objectWithKeyValues:dict[@"data"]];
+    DetailModel *model  = [DetailModel mj_objectWithKeyValues:dict[@"data"]];
             [_dataArray addObject:model];
         }
         [_tableView reloadData];
     } failureBlock:^{
-        
+
     }];
 }
 
@@ -57,14 +57,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIde = @"cell";
-    JHTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIde];
+    JHTableViewCell *cell    = [tableView dequeueReusableCellWithIdentifier:cellIde];
     if (!cell) {
-        cell = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIde];
+    cell                     = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIde];
     }
-    DetailModel *model = _dataArray[indexPath.row];
+    DetailModel *model       = _dataArray[indexPath.row];
     [cell.imageV sd_setImageWithURL:[NSURL URLWithString:model.feed]];
-    cell.titleL.text = model.title;
-    cell.cWithTL.text = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
+    cell.titleL.text         = model.title;
+    cell.cWithTL.text        = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
     return cell;
 }
 
@@ -76,15 +76,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
-    detail.model = _dataArray[indexPath.row];
+    DetailModel *model = _dataArray[indexPath.row];
+    
+    detail.detailTitle        = model.title;
+    detail.detailCategory     = model.category;
+    detail.detailPlayUrl      = model.playUrl;
+    detail.detailDuration     = model.duration;
+    detail.detailCoverBlurred = model.blurred;
+    detail.detailCoverForFeed = model.feed;
+    detail.detailDescription  = model.my_description;
     
     [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

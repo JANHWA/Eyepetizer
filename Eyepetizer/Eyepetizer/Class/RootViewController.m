@@ -17,8 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _dataArray = [[NSMutableArray alloc] init];
+
+    _dataArray                                = [[NSMutableArray alloc] init];
     [self loadData];
     [self configUI];
 }
@@ -26,12 +26,12 @@
 - (void)configUI
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-44) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
+    _tableView                                = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-44) style:UITableViewStylePlain];
+    _tableView.delegate                       = self;
+    _tableView.dataSource                     = self;
     [self.view addSubview:_tableView];
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_top"] forBarMetrics:UIBarMetricsCompact];
-    
+
 }
 
 - (void)loadData
@@ -66,24 +66,24 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(JHTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CATransform3D rotation;//3D旋转
-    
-    rotation = CATransform3DMakeTranslation(0 ,50 ,20);
-    rotation = CATransform3DScale(rotation, 0.9, .9, 1);
-    
-    rotation.m34 = 1.0/ -600;
-    
-    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
-    cell.layer.shadowOffset = CGSizeMake(10, 10);
-    cell.alpha = 0;
-    
-    cell.layer.transform = rotation;
-    
+
+    rotation                                  = CATransform3DMakeTranslation(0 ,50 ,20);
+    rotation                                  = CATransform3DScale(rotation, 0.9, .9, 1);
+
+    rotation.m34                              = 1.0/ -600;
+
+    cell.layer.shadowColor                    = [[UIColor blackColor]CGColor];
+    cell.layer.shadowOffset                   = CGSizeMake(10, 10);
+    cell.alpha                                = 0;
+
+    cell.layer.transform                      = rotation;
+
     [UIView beginAnimations:@"rotation" context:NULL];
     //旋转时间
     [UIView setAnimationDuration:1];
-    cell.layer.transform = CATransform3DIdentity;
-    cell.alpha = 1;
-    cell.layer.shadowOffset = CGSizeMake(0, 0);
+    cell.layer.transform                      = CATransform3DIdentity;
+    cell.alpha                                = 1;
+    cell.layer.shadowOffset                   = CGSizeMake(0, 0);
     [UIView commitAnimations];
 }
 

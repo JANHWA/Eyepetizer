@@ -44,15 +44,15 @@
 - (void)configUI
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.scrollDirection =  UICollectionViewScrollDirectionVertical;
-    flowLayout.minimumLineSpacing = 3;
-    flowLayout.minimumInteritemSpacing = 4;
-    
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 44) collectionViewLayout:flowLayout];
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    _collectionView.backgroundColor = [UIColor whiteColor];
+    UICollectionViewFlowLayout *flowLayout    = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.scrollDirection                = UICollectionViewScrollDirectionVertical;
+    flowLayout.minimumLineSpacing             = 3;
+    flowLayout.minimumInteritemSpacing        = 4;
+
+    _collectionView                           = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 44) collectionViewLayout:flowLayout];
+    _collectionView.delegate                  = self;
+    _collectionView.dataSource                = self;
+    _collectionView.backgroundColor           = [UIColor whiteColor];
     [_collectionView registerClass:[JHCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:_collectionView];
 }
@@ -71,18 +71,18 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellId = @"cell";
+    static NSString *cellId    = @"cell";
     JHCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    DiscoverModel *model = _dataArray[indexPath.item];
+    DiscoverModel *model       = _dataArray[indexPath.item];
     [cell.bgImage sd_setImageWithURL:[NSURL URLWithString:model.bgPicture]];
-    cell.title.text = model.name;
+    cell.title.text            = model.name;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ListViewController *vc = [[ListViewController alloc] init];
-    vc.url  = [_dataArray[indexPath.item] name];
+    vc.url                 = [_dataArray[indexPath.item] name];
     [self.navigationController pushViewController:vc animated:YES];
     [_collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
