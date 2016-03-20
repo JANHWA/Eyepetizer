@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ChoiceViewController.h"
 #import "DiscoverViewController.h"
+#import "RankViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,8 +30,8 @@
 
 - (void)configUI
 {
-    NSArray *className = @[@"ChoiceViewController",@"DiscoverViewController"];
-    NSArray *titles = @[@"每日精选",@"发现更多"];
+    NSArray *className = @[@"ChoiceViewController",@"DiscoverViewController",@"RankViewController"];
+    NSArray *titles = @[@"每日精选",@"发现更多",@"热门排行"];
     NSMutableArray *arrayM = [[NSMutableArray alloc] init];
     for (NSInteger i = 0; i < className.count; i++) {
         

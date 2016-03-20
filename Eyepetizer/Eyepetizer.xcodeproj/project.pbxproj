@@ -49,6 +49,13 @@
 		BC4C22F91C9D7AAB00CF66FB /* JHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22F81C9D7AAB00CF66FB /* JHTableViewCell.m */; };
 		BCB6FFD61C9E759600B7B1C8 /* DiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB6FFD51C9E759600B7B1C8 /* DiscoverModel.m */; };
 		BCB6FFDA1C9E765D00B7B1C8 /* JHCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB6FFD91C9E765D00B7B1C8 /* JHCollectionViewCell.m */; };
+		BCC0732D1C9ED04A00D5924B /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0732C1C9ED04A00D5924B /* RankViewController.m */; };
+		BCC073301C9EDD8200D5924B /* WRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0732F1C9EDD8200D5924B /* WRankViewController.m */; };
+		BCC073331C9EDD8E00D5924B /* MRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC073321C9EDD8E00D5924B /* MRankViewController.m */; };
+		BCC073361C9EDD9900D5924B /* TRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC073351C9EDD9900D5924B /* TRankViewController.m */; };
+		BCC073391C9EE7BD00D5924B /* WRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC073381C9EE7BD00D5924B /* WRankModel.m */; };
+		BCC0733C1C9EEA8100D5924B /* MRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0733B1C9EEA8100D5924B /* MRankModel.m */; };
+		BCC0733F1C9EEB6800D5924B /* TRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0733E1C9EEB6800D5924B /* TRankModel.m */; };
 		BCEE85C71C9BDACE0031B6C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE85C61C9BDACE0031B6C0 /* main.m */; };
 		BCEE85CA1C9BDACE0031B6C0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE85C91C9BDACE0031B6C0 /* AppDelegate.m */; };
 		BCEE85E01C9BDACF0031B6C0 /* EyepetizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE85DF1C9BDACF0031B6C0 /* EyepetizerTests.m */; };
@@ -292,6 +299,20 @@
 		BCB6FFD51C9E759600B7B1C8 /* DiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverModel.m; sourceTree = "<group>"; };
 		BCB6FFD81C9E765D00B7B1C8 /* JHCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCollectionViewCell.h; sourceTree = "<group>"; };
 		BCB6FFD91C9E765D00B7B1C8 /* JHCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCollectionViewCell.m; sourceTree = "<group>"; };
+		BCC0732B1C9ED04A00D5924B /* RankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
+		BCC0732C1C9ED04A00D5924B /* RankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
+		BCC0732E1C9EDD8200D5924B /* WRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRankViewController.h; sourceTree = "<group>"; };
+		BCC0732F1C9EDD8200D5924B /* WRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRankViewController.m; sourceTree = "<group>"; };
+		BCC073311C9EDD8E00D5924B /* MRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRankViewController.h; sourceTree = "<group>"; };
+		BCC073321C9EDD8E00D5924B /* MRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRankViewController.m; sourceTree = "<group>"; };
+		BCC073341C9EDD9900D5924B /* TRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRankViewController.h; sourceTree = "<group>"; };
+		BCC073351C9EDD9900D5924B /* TRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRankViewController.m; sourceTree = "<group>"; };
+		BCC073371C9EE7BD00D5924B /* WRankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRankModel.h; sourceTree = "<group>"; };
+		BCC073381C9EE7BD00D5924B /* WRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRankModel.m; sourceTree = "<group>"; };
+		BCC0733A1C9EEA8100D5924B /* MRankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRankModel.h; sourceTree = "<group>"; };
+		BCC0733B1C9EEA8100D5924B /* MRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRankModel.m; sourceTree = "<group>"; };
+		BCC0733D1C9EEB6800D5924B /* TRankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRankModel.h; sourceTree = "<group>"; };
+		BCC0733E1C9EEB6800D5924B /* TRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRankModel.m; sourceTree = "<group>"; };
 		BCEE85C21C9BDACE0031B6C0 /* Eyepetizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eyepetizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEE85C61C9BDACE0031B6C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCEE85C81C9BDACE0031B6C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -648,6 +669,41 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		BCC073281C9ECFF000D5924B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BCC0732B1C9ED04A00D5924B /* RankViewController.h */,
+				BCC0732C1C9ED04A00D5924B /* RankViewController.m */,
+				BCC0732E1C9EDD8200D5924B /* WRankViewController.h */,
+				BCC0732F1C9EDD8200D5924B /* WRankViewController.m */,
+				BCC073311C9EDD8E00D5924B /* MRankViewController.h */,
+				BCC073321C9EDD8E00D5924B /* MRankViewController.m */,
+				BCC073341C9EDD9900D5924B /* TRankViewController.h */,
+				BCC073351C9EDD9900D5924B /* TRankViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		BCC073291C9ECFFF00D5924B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		BCC0732A1C9ED00800D5924B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BCC073371C9EE7BD00D5924B /* WRankModel.h */,
+				BCC073381C9EE7BD00D5924B /* WRankModel.m */,
+				BCC0733A1C9EEA8100D5924B /* MRankModel.h */,
+				BCC0733B1C9EEA8100D5924B /* MRankModel.m */,
+				BCC0733D1C9EEB6800D5924B /* TRankModel.h */,
+				BCC0733E1C9EEB6800D5924B /* TRankModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		BCEE85B91C9BDACD0031B6C0 = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +789,9 @@
 		BCEE85FA1C9BDC450031B6C0 /* Rank */ = {
 			isa = PBXGroup;
 			children = (
+				BCC0732A1C9ED00800D5924B /* Model */,
+				BCC073291C9ECFFF00D5924B /* View */,
+				BCC073281C9ECFF000D5924B /* Controller */,
 			);
 			path = Rank;
 			sourceTree = "<group>";
@@ -1293,6 +1352,7 @@
 			files = (
 				BC31812F1C9EA3AF008EAE01 /* MJPropertyType.m in Sources */,
 				BCEE86711C9BF0950031B6C0 /* SDWebImageDecoder.m in Sources */,
+				BCC0732D1C9ED04A00D5924B /* RankViewController.m in Sources */,
 				BCEE867C1C9BF0950031B6C0 /* UIView+WebCacheOperation.m in Sources */,
 				BCEE86691C9BF0950031B6C0 /* JSONHTTPClient.m in Sources */,
 				BCEE86821C9BF6030031B6C0 /* ChoiceViewController.m in Sources */,
@@ -1319,6 +1379,7 @@
 				BCEE865B1C9BF0950031B6C0 /* AFHTTPRequestOperationManager.m in Sources */,
 				BCEE865F1C9BF0950031B6C0 /* AFURLConnectionOperation.m in Sources */,
 				BC4C21141C9D244E00CF66FB /* KRVideoPlayerController.m in Sources */,
+				BCC0733C1C9EEA8100D5924B /* MRankModel.m in Sources */,
 				BCEE865A1C9BF0950031B6C0 /* AFHTTPRequestOperation.m in Sources */,
 				BC31812B1C9EA3AF008EAE01 /* MJExtensionConst.m in Sources */,
 				BCEE867A1C9BF0950031B6C0 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1332,12 +1393,15 @@
 				BC3181341C9EA3AF008EAE01 /* NSString+MJExtension.m in Sources */,
 				BC31810E1C9E7C57008EAE01 /* DiscoverViewController.m in Sources */,
 				BCEE86671C9BF0950031B6C0 /* NSArray+JSONModel.m in Sources */,
+				BCC073301C9EDD8200D5924B /* WRankViewController.m in Sources */,
 				BC3181301C9EA3AF008EAE01 /* NSObject+MJClass.m in Sources */,
 				BC4C22F01C9D5C1F00CF66FB /* MASConstraintMaker.m in Sources */,
 				BCEE86791C9BF0950031B6C0 /* UIImage+WebP.m in Sources */,
 				BCEE86751C9BF0950031B6C0 /* SDWebImagePrefetcher.m in Sources */,
 				BCEE86651C9BF0950031B6C0 /* JSONModelClassProperty.m in Sources */,
+				BCC0733F1C9EEB6800D5924B /* TRankModel.m in Sources */,
 				BCEE86601C9BF0950031B6C0 /* AFURLRequestSerialization.m in Sources */,
+				BCC073331C9EDD8E00D5924B /* MRankViewController.m in Sources */,
 				BC4C22EF1C9D5C1F00CF66FB /* MASConstraint.m in Sources */,
 				BCEE865C1C9BF0950031B6C0 /* AFHTTPSessionManager.m in Sources */,
 				BCEE865D1C9BF0950031B6C0 /* AFNetworkReachabilityManager.m in Sources */,
@@ -1358,7 +1422,9 @@
 				BC31812D1C9EA3AF008EAE01 /* MJProperty.m in Sources */,
 				BC3181331C9EA3AF008EAE01 /* NSObject+MJProperty.m in Sources */,
 				BCEE86621C9BF0950031B6C0 /* AFURLSessionManager.m in Sources */,
+				BCC073391C9EE7BD00D5924B /* WRankModel.m in Sources */,
 				BCEE866F1C9BF0950031B6C0 /* SDImageCache.m in Sources */,
+				BCC073361C9EDD9900D5924B /* TRankViewController.m in Sources */,
 				BCEE866A1C9BF0950031B6C0 /* JSONModel+networking.m in Sources */,
 				BCEE86061C9BE8960031B6C0 /* RootViewController.m in Sources */,
 			);

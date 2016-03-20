@@ -25,8 +25,7 @@
 
 - (void)configUI
 {
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    _tableView                                = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-44) style:UITableViewStylePlain];
+    _tableView                                = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-44) style:UITableViewStylePlain];
     _tableView.delegate                       = self;
     _tableView.dataSource                     = self;
     [self.view addSubview:_tableView];
@@ -43,14 +42,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"子类需要重写numberOfRowsInSection");
-    return 0;
+    
+    return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     NSLog(@"子类需要重写heightForRowAtIndexPath");
-    return 0;
+    return 240;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

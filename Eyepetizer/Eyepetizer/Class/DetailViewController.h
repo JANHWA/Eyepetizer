@@ -11,7 +11,7 @@
 
 @interface DetailViewController : UIViewController
 
-//@property (nonatomic, strong) ChoicModel *model;
+
 
 @property (nonatomic, copy) NSString *detailTitle;
 @property (nonatomic, copy) NSString *detailCategory;

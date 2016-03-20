@@ -16,6 +16,8 @@
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
 #import "JHTableViewCell.h"
+#import "MJExtension.h"
+#import "DetailViewController.h"
 
 
 #pragma mark - 系统相关
