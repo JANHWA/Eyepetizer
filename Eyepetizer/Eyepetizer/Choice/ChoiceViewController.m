@@ -7,7 +7,6 @@
 //
 
 #import "ChoiceViewController.h"
-#import "ChoiceCell.h"
 #import "DetailViewController.h"
 #import "JHTableViewCell.h"
 #import "UIImageView+WebCache.h"
@@ -96,7 +95,6 @@
     cell.alpha = 1;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
     [UIView commitAnimations];
-//    cell.model = _dataArray[indexPath.row];
 }
 
 

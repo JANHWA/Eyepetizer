@@ -26,7 +26,7 @@
         KWS(ws);
         // 初始化背景视图
         _imageV = [[UIImageView alloc] init];
-//        _imageV.contentMode = UIViewContentModeScaleAspectFill;
+        _imageV.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:_imageV];
        
         [_imageV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -34,8 +34,6 @@
             make.left.equalTo(ws.contentView.mas_left).offset(0);
             make.bottom.equalTo(ws.contentView.mas_bottom).offset(0);
             make.right.equalTo(ws.contentView.mas_right).offset(0);
-            make.height.equalTo(ws.contentView.mas_height);
-            make.width.equalTo(ws.contentView.mas_width);
         }];
         
         // 标题
@@ -49,8 +47,6 @@
             make.left.equalTo(ws.contentView.mas_left).offset(0);
             make.bottom.equalTo(ws.contentView.mas_bottom).offset(-120);
             make.right.equalTo(ws.contentView.mas_right).offset(0);
-//            make.height.equalTo(@30);
-            make.width.equalTo(ws.contentView.mas_width);
         }];
         // 分类和时间
         _cWithTL = [[UILabel alloc] init];
@@ -59,12 +55,10 @@
         _cWithTL.textColor = [UIColor colorWithRed:0.99 green:0.99 blue:1 alpha:1];
         [self.contentView addSubview:_cWithTL];
         [_cWithTL mas_makeConstraints:^(MASConstraintMaker *make) {
-            
             make.top.equalTo(ws.contentView.mas_top).offset(125);
             make.left.equalTo(ws.contentView.mas_left).offset(0);
             make.bottom.equalTo(ws.contentView.mas_bottom).offset(-95);
             make.right.equalTo(ws.contentView.mas_right).offset(0);
-            make.width.equalTo(ws.contentView.mas_width);
             
         }];
 

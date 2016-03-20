@@ -14,6 +14,8 @@
 #import "CHNetWorking.h"
 #import "RootViewController.h"
 #import "Masonry.h"
+#import "UIImageView+WebCache.h"
+#import "JHTableViewCell.h"
 
 
 #pragma mark - 系统相关
