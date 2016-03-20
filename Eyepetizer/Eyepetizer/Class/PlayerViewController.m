@@ -29,7 +29,6 @@
     imageView.userInteractionEnabled = YES;
     UISwipeGestureRecognizer *pan = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handelPan:)];
     pan.direction = UISwipeGestureRecognizerDirectionDown;
-//    pan.minimumNumberOfTouches = 1;
     [imageView addGestureRecognizer:pan];
 }
 - (void)handelPan:(UIPanGestureRecognizer *)sender

@@ -1,45 +1,45 @@
 //
-//  ChoiceViewController.m
+//  ListViewController.m
 //  Eyepetizer
 //
-//  Created by qianfeng on 16/3/18.
+//  Created by qianfeng on 16/3/20.
 //  Copyright © 2016年 CheeHwa. All rights reserved.
 //
 
-#import "ChoiceViewController.h"
+#import "ListViewController.h"
+#import "DetailModel.h"
+#import "MJExtension.h"
 #import "DetailViewController.h"
-#import "JHTableViewCell.h"
-#import "UIImageView+WebCache.h"
 
-@interface ChoiceViewController ()
+@interface ListViewController ()
 
 @end
 
-@implementation ChoiceViewController
+@implementation ListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self loadData];
 }
 
 - (void)configUI
 {
     [super configUI];
     [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
+    
 }
 
 - (void)loadData
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyyMMdd"];
-    NSDate *date = [[NSDate alloc] init];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    [[CHNetWorking shareManager] requestData:[NSString stringWithFormat:kChoice,dateString] parameters:nil sucBlock:^(id responseObject) {
-        NSArray *array = responseObject[@"dailyList"];
+    [DetailModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+        return @{@"my_description":@"description",@"feed":@"cover.feed",@"blurred":@"cover.blurred"};
+    }];
+    NSString *urlString = [NSString stringWithFormat:kCategory,_url];
+    NSString *url = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[CHNetWorking shareManager] requestData:url parameters:nil sucBlock:^(id responseObject) {
+        NSArray *array = responseObject[@"itemList"];
         for (NSDictionary *dict in array) {
-            NSArray *array2 = [ChoicModel arrayOfModelsFromDictionaries:dict[@"videoList"]];
-            [_dataArray addObjectsFromArray:array2];
+            DetailModel *model = [DetailModel mj_objectWithKeyValues:dict[@"data"]];
+            [_dataArray addObject:model];
         }
         [_tableView reloadData];
     } failureBlock:^{
@@ -47,30 +47,30 @@
     }];
 }
 
-#pragma mark - tableView 协议方法
+#pragma mark - tableView协议方法
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _dataArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 240;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellId = @"cell";
-    JHTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell == nil) {
-        cell = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    static NSString *cellIde = @"cell";
+    JHTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIde];
+    if (!cell) {
+        cell = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIde];
     }
-    ChoicModel *model = _dataArray[indexPath.row];
-    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:model.coverForFeed]];
+    DetailModel *model = _dataArray[indexPath.row];
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:model.feed]];
     cell.titleL.text = model.title;
     cell.cWithTL.text = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 240;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,6 +80,7 @@
     
     [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 

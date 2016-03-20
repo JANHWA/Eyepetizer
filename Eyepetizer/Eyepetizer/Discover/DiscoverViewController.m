@@ -9,6 +9,7 @@
 #import "DiscoverViewController.h"
 #import "JHCollectionViewCell.h"
 #import "DiscoverModel.h"
+#import "ListViewController.h"
 
 
 @interface DiscoverViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
@@ -80,7 +81,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    ListViewController *vc = [[ListViewController alloc] init];
+    vc.url  = [_dataArray[indexPath.item] name];
+    [self.navigationController pushViewController:vc animated:YES];
+    [_collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 
