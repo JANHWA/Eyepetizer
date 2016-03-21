@@ -19,6 +19,7 @@
     [super viewDidLoad];
 
     _dataArray                                = [[NSMutableArray alloc] init];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self loadData];
     [self configUI];
 }

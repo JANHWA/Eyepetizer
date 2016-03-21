@@ -52,7 +52,7 @@
     _collectionView                           = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 44) collectionViewLayout:flowLayout];
     _collectionView.delegate                  = self;
     _collectionView.dataSource                = self;
-    _collectionView.backgroundColor           = [UIColor whiteColor];
+    _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerClass:[JHCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:_collectionView];
 }

@@ -36,7 +36,6 @@
 		BC4C21131C9D244E00CF66FB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = BC4C21011C9D244E00CF66FB /* .gitkeep */; };
 		BC4C21141C9D244E00CF66FB /* KRVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C21031C9D244E00CF66FB /* KRVideoPlayerController.m */; };
 		BC4C21151C9D244E00CF66FB /* KRVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C21051C9D244E00CF66FB /* KRVideoPlayerControlView.m */; };
-		BC4C211B1C9D294700CF66FB /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C211A1C9D294700CF66FB /* PlayerViewController.m */; };
 		BC4C22EE1C9D5C1F00CF66FB /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22D81C9D5C1F00CF66FB /* MASCompositeConstraint.m */; };
 		BC4C22EF1C9D5C1F00CF66FB /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22DB1C9D5C1F00CF66FB /* MASConstraint.m */; };
 		BC4C22F01C9D5C1F00CF66FB /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22DD1C9D5C1F00CF66FB /* MASConstraintMaker.m */; };
@@ -268,8 +267,6 @@
 		BC4C21031C9D244E00CF66FB /* KRVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRVideoPlayerController.m; sourceTree = "<group>"; };
 		BC4C21041C9D244E00CF66FB /* KRVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerControlView.h; sourceTree = "<group>"; };
 		BC4C21051C9D244E00CF66FB /* KRVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRVideoPlayerControlView.m; sourceTree = "<group>"; };
-		BC4C21191C9D294700CF66FB /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
-		BC4C211A1C9D294700CF66FB /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		BC4C22D71C9D5C1F00CF66FB /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		BC4C22D81C9D5C1F00CF66FB /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		BC4C22D91C9D5C1F00CF66FB /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -837,8 +834,6 @@
 				BCEE86051C9BE8960031B6C0 /* RootViewController.m */,
 				BCEE875A1C9C26560031B6C0 /* DetailViewController.h */,
 				BCEE875B1C9C26560031B6C0 /* DetailViewController.m */,
-				BC4C21191C9D294700CF66FB /* PlayerViewController.h */,
-				BC4C211A1C9D294700CF66FB /* PlayerViewController.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -1370,7 +1365,6 @@
 				BC31812E1C9EA3AF008EAE01 /* MJPropertyKey.m in Sources */,
 				BC31812C1C9EA3AF008EAE01 /* MJFoundation.m in Sources */,
 				BCEE875C1C9C26560031B6C0 /* DetailViewController.m in Sources */,
-				BC4C211B1C9D294700CF66FB /* PlayerViewController.m in Sources */,
 				BCEE86731C9BF0950031B6C0 /* SDWebImageDownloaderOperation.m in Sources */,
 				BCEE866B1C9BF0950031B6C0 /* JSONKeyMapper.m in Sources */,
 				BCEE85CA1C9BDACE0031B6C0 /* AppDelegate.m in Sources */,
