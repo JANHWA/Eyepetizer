@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:0.99 green:0.91 blue:0.71 alpha:1];
+    self.view.backgroundColor                 = [UIColor colorWithRed:0.99 green:0.91 blue:0.71 alpha:1];
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
@@ -34,45 +34,45 @@
         return @{@"my_description":@"description",@"feed":@"cover.feed",@"blurred":@"cover.blurred"};
     }];
     [[CHNetWorking shareManager] requestData:kWeekRank parameters:nil sucBlock:^(id responseObject) {
-        NSArray *array      = responseObject[@"itemList"];
+    NSArray *array                            = responseObject[@"itemList"];
         for (NSDictionary *dict in array) {
-            WRankModel *model  = [WRankModel mj_objectWithKeyValues:dict[@"data"]];
+    WRankModel *model                         = [WRankModel mj_objectWithKeyValues:dict[@"data"]];
             [_dataArray addObject:model];
         }
         [_tableView reloadData];
     } failureBlock:^{
-        
+
     }];
-    
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIde = @"cell";
-    JHTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIde];
+    static NSString *cellIde                  = @"cell";
+    JHTableViewCell *cell                     = [tableView dequeueReusableCellWithIdentifier:cellIde];
     if (!cell) {
-        cell = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIde];
+    cell                                      = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIde];
     }
-    WRankModel *model       = _dataArray[indexPath.row];
+    WRankModel *model                         = _dataArray[indexPath.row];
     [cell.imageV sd_setImageWithURL:[NSURL URLWithString:model.feed]];
-    cell.titleL.text         = model.title;
-    cell.cWithTL.text        = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
+    cell.titleL.text                          = model.title;
+    cell.cWithTL.text                         = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailViewController *detail = [[DetailViewController alloc] init];
-    WRankModel *model = _dataArray[indexPath.row];
-    
-    detail.detailTitle        = model.title;
-    detail.detailCategory     = model.category;
-    detail.detailPlayUrl      = model.playUrl;
-    detail.detailDuration     = model.duration;
-    detail.detailCoverBlurred = model.blurred;
-    detail.detailCoverForFeed = model.feed;
-    detail.detailDescription  = model.my_description;
-    
+    DetailViewController *detail              = [[DetailViewController alloc] init];
+    WRankModel *model                         = _dataArray[indexPath.row];
+
+    detail.detailTitle                        = model.title;
+    detail.detailCategory                     = model.category;
+    detail.detailPlayUrl                      = model.playUrl;
+    detail.detailDuration                     = model.duration;
+    detail.detailCoverBlurred                 = model.blurred;
+    detail.detailCoverForFeed                 = model.feed;
+    detail.detailDescription                  = model.my_description;
+
     [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

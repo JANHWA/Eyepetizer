@@ -80,13 +80,15 @@
         Class class = NSClassFromString(className[i]);
         [_vcArray addObject:[[class alloc] init]];
     }
-    _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle: UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    
     [_pageViewController setViewControllers:@[_vcArray[0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
         
     }];
     _pageViewController.delegate = self;
     _pageViewController.dataSource = self;
     _pageViewController.view.frame = CGRectMake(0, 94, kScreenWidth, kScreenHeight - 94 - 44);
+    [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     self.currentPage = 0;
     
