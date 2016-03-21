@@ -25,6 +25,12 @@
 {
     [super configUI];
     [self customBackButton];
+    [super configUI];
+    [self customBackButton];
+    _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-44-84) style:UITableViewStylePlain];
+    _tableView.delegate   = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
     [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 - (void)loadData

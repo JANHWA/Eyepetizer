@@ -36,8 +36,8 @@
         // 标题
     _titleL                = [[UILabel alloc] init];
     _titleL.textAlignment  = NSTextAlignmentCenter;
-    _titleL.font           = [UIFont systemFontOfSize:20];
-    _titleL.textColor      = [UIColor colorWithRed:0.99 green:0.99 blue:1 alpha:1];
+    _titleL.textColor      = [UIColor colorWithRed:0.899 green:0.902 blue:0.912 alpha:1.000];
+        _titleL.font = [UIFont boldSystemFontOfSize:20];
         [self.contentView addSubview:_titleL];
         [_titleL mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_imageV.mas_top).offset(50);
@@ -48,8 +48,8 @@
         // 分类和时间
     _cWithTL               = [[UILabel alloc] init];
     _cWithTL.textAlignment = NSTextAlignmentCenter;
-    _cWithTL.font          = [UIFont systemFontOfSize:18];
-    _cWithTL.textColor     = [UIColor colorWithRed:0.99 green:0.99 blue:1 alpha:1];
+    _cWithTL.font          = [UIFont boldSystemFontOfSize:18];
+    _cWithTL.textColor     = [UIColor colorWithRed:0.899 green:0.902 blue:0.912 alpha:1.000];
         [self.contentView addSubview:_cWithTL];
         [_cWithTL mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_titleL.mas_bottom).offset(10);

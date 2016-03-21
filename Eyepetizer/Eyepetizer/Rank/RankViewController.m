@@ -42,8 +42,8 @@
     [_wButton setTitle:@"周排行" forState:UIControlStateNormal];
     [_wButton setBackgroundColor:[UIColor whiteColor]];
     [_wButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_wButton setTitleColor:[UIColor colorWithRed:0.21 green:0.21 blue:0.21 alpha:1] forState:UIControlStateNormal];
-    [_wButton setTitleColor:[UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1] forState:UIControlStateSelected];
+    [_wButton setTitleColor:[UIColor colorWithWhite:0.324 alpha:1.000] forState:UIControlStateNormal];
+    [_wButton setTitleColor:[UIColor colorWithWhite:0.629 alpha:1.000] forState:UIControlStateSelected];
     [self.view addSubview:_wButton];
     [_wButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(ws.view.mas_top).offset(64);
@@ -56,8 +56,8 @@
     [_mButton setTitle:@"月排行" forState:UIControlStateNormal];
     [_mButton setBackgroundColor:[UIColor whiteColor]];
     [_mButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_mButton setTitleColor:[UIColor colorWithRed:0.21 green:0.21 blue:0.21 alpha:1] forState:UIControlStateNormal];
-    [_mButton setTitleColor:[UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1] forState:UIControlStateSelected];
+    [_mButton setTitleColor:[UIColor colorWithWhite:0.324 alpha:1.000] forState:UIControlStateNormal];
+    [_mButton setTitleColor:[UIColor colorWithWhite:0.629 alpha:1.000] forState:UIControlStateSelected];
     [self.view addSubview:_mButton];
     [_mButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(ws.view.mas_top).offset(64);
@@ -70,8 +70,8 @@
     [_tButton setTitle:@"总排行" forState:UIControlStateNormal];
     [_tButton setBackgroundColor:[UIColor whiteColor]];
     [_tButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_tButton setTitleColor:[UIColor colorWithRed:0.21 green:0.21 blue:0.21 alpha:1] forState:UIControlStateNormal];
-    [_tButton setTitleColor:[UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1] forState:UIControlStateSelected];
+    [_tButton setTitleColor:[UIColor colorWithWhite:0.324 alpha:1.000] forState:UIControlStateNormal];
+    [_tButton setTitleColor:[UIColor colorWithWhite:0.629 alpha:1.000] forState:UIControlStateSelected];
     [self.view addSubview:_tButton];
     [_tButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(ws.view.mas_top).offset(64);
@@ -93,6 +93,7 @@
     }];
     _pageViewController.delegate = self;
     _pageViewController.dataSource = self;
+    
     _pageViewController.view.frame = CGRectMake(0, 94, kScreenWidth, kScreenHeight - 94 - 44);
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];

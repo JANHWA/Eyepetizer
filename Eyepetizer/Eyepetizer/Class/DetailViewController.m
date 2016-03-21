@@ -86,7 +86,7 @@
     // 标题
     _titleLabel           = [[UILabel alloc] init];
     _titleLabel.text      = _detailTitle;
-    _titleLabel.font      = [UIFont systemFontOfSize:18];
+    _titleLabel.font      = [UIFont boldSystemFontOfSize:20];
     _titleLabel.textColor = [UIColor colorWithRed:0.909 green:0.912 blue:0.921 alpha:1.000];
     [_bgView addSubview:_titleLabel];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -120,7 +120,7 @@
     _contentLabel               = [[UILabel alloc] init];
     _contentLabel.text          = _detailDescription;
     _contentLabel.font          = [UIFont systemFontOfSize:20];
-    _contentLabel.textColor     = [UIColor colorWithRed:0.856 green:0.855 blue:0.874 alpha:1.000];
+    _contentLabel.textColor     = [UIColor colorWithRed:0.735 green:0.734 blue:0.750 alpha:1.000];
     _contentLabel.numberOfLines = 0;
     _contentLabel.lineBreakMode = NSLineBreakByCharWrapping;
     [_bgView addSubview:_contentLabel];

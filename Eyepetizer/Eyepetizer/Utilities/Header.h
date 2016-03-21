@@ -49,7 +49,7 @@
  *    热门排行
  */
 // 周排行
-#define kWeekRank @"http://baobab.wandoujia.com/api/v3/videos?start=10&num=10&categoryName=%E5%88%9B%E6%84%8F&strategy=date&udid=827b85f24a1e4f48bdc0b6cdbb23f755457e835c&vc=89&vn=1.13.1&deviceModel=GT-N7102&first_channel=eyepetizer_baidu_market&last_channel=eyepetizer_baidu_market"
+#define kWeekRank @"http://baobab.wandoujia.com/api/v3/ranklist?num=10&strategy=weekly&udid=827b85f24a1e4f48bdc0b6cdbb23f755457e835c&vc=80&vn=1.13.1&deviceModel=GT-N7102&first_channel=eyepetizer_baidu_market&last_channel=eyepetizer_baidu_market"
 // 月排行
 #define kMonthRank @"http://baobab.wandoujia.com/api/v3/ranklist?num=10&strategy=monthly&udid=827b85f24a1e4f48bdc0b6cdbb23f755457e835c&vc=89&vn=1.13.1&deviceModel=GT-N7102&first_channel=eyepetizer_baidu_market&last_channel=eyepetizer_baidu_market"
 // 总排行

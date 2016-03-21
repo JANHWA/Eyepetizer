@@ -27,9 +27,9 @@
 
 - (void)configUI
 {
-    _tableView                                = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-44) style:UITableViewStylePlain];
-    _tableView.delegate                       = self;
-    _tableView.dataSource                     = self;
+    _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-44) style:UITableViewStylePlain];
+    _tableView.delegate   = self;
+    _tableView.dataSource = self;
     [self.view addSubview:_tableView];
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_top"] forBarMetrics:UIBarMetricsCompact];
 
