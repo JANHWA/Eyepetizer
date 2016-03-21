@@ -46,6 +46,7 @@
 		BC4C22F51C9D5C1F00CF66FB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22EA1C9D5C1F00CF66FB /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		BC4C22F61C9D5C1F00CF66FB /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22EC1C9D5C1F00CF66FB /* View+MASAdditions.m */; };
 		BC4C22F91C9D7AAB00CF66FB /* JHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22F81C9D7AAB00CF66FB /* JHTableViewCell.m */; };
+		BC7DA3131CA01C7500EDB0E6 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7DA3121CA01C7500EDB0E6 /* back@2x.png */; };
 		BCB6FFD61C9E759600B7B1C8 /* DiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB6FFD51C9E759600B7B1C8 /* DiscoverModel.m */; };
 		BCB6FFDA1C9E765D00B7B1C8 /* JHCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB6FFD91C9E765D00B7B1C8 /* JHCollectionViewCell.m */; };
 		BCC0732D1C9ED04A00D5924B /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0732C1C9ED04A00D5924B /* RankViewController.m */; };
@@ -292,6 +293,7 @@
 		BC4C22ED1C9D5C1F00CF66FB /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		BC4C22F71C9D7AAB00CF66FB /* JHTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTableViewCell.h; sourceTree = "<group>"; };
 		BC4C22F81C9D7AAB00CF66FB /* JHTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTableViewCell.m; sourceTree = "<group>"; };
+		BC7DA3121CA01C7500EDB0E6 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "../back@2x.png"; sourceTree = "<group>"; };
 		BCB6FFD41C9E759600B7B1C8 /* DiscoverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverModel.h; sourceTree = "<group>"; };
 		BCB6FFD51C9E759600B7B1C8 /* DiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverModel.m; sourceTree = "<group>"; };
 		BCB6FFD81C9E765D00B7B1C8 /* JHCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 				BCEE86921C9C1C560031B6C0 /* AppIcon60x60@2x.png */,
 				BCEE86931C9C1C560031B6C0 /* AppIcon76x76@2x~ipad.png */,
 				BCEE86941C9C1C560031B6C0 /* AppIcon76x76~ipad.png */,
+				BC7DA3121CA01C7500EDB0E6 /* back@2x.png */,
 				BCEE86951C9C1C560031B6C0 /* bg_bottom.png */,
 				BCEE86961C9C1C560031B6C0 /* bg_bottom@2x.png */,
 				BCEE86971C9C1C560031B6C0 /* bg_left.png */,
@@ -1243,6 +1246,7 @@
 				BC4C21111C9D244E00CF66FB /* kr-video-player-shrinkscreen@2x.png in Resources */,
 				BCEE87151C9C1C560031B6C0 /* btn_hd_ipad_disable.png in Resources */,
 				BCEE87011C9C1C560031B6C0 /* bg_top@2x.png in Resources */,
+				BC7DA3131CA01C7500EDB0E6 /* back@2x.png in Resources */,
 				BCEE873C1C9C1C560031B6C0 /* LaunchImage-700-Landscape~ipad.png in Resources */,
 				BCEE87211C9C1C560031B6C0 /* btn_next_iPad@2x.png in Resources */,
 				BCEE87171C9C1C560031B6C0 /* btn_HD_normal.png in Resources */,

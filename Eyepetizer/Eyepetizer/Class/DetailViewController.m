@@ -34,6 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configUI];
+    [self customBackButton];
 }
 
 - (void)configUI
@@ -53,21 +54,20 @@
     [_bgImage sd_setImageWithURL:[NSURL URLWithString:_detailCoverBlurred]];
     [_bgView addSubview:_bgImage];
     [_bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.view.mas_top).offset(0);
+        make.top.equalTo(ws.view.mas_top).offset(64);
         make.left.equalTo(ws.view.mas_left).offset(0);
-//        make.width.mas_equalTo(kScreenWidth);
         make.bottom.equalTo(ws.view.mas_bottom).offset(0);
         make.right.equalTo(ws.view.mas_right).offset(0);
     }];
     // 创建前面的视图
     _frontImage             = [[UIImageView alloc] init];
-    _frontImage.contentMode = UIViewContentModeScaleAspectFill;
     [_frontImage sd_setImageWithURL:[NSURL URLWithString:_detailCoverForFeed]];
     [_bgView addSubview:_frontImage];
     [_frontImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.view.mas_top).offset(64);
+        make.top.equalTo(_bgImage.mas_top).offset(0);
         make.left.equalTo(ws.view.mas_left).offset(0);
-        make.height.mas_equalTo(kScreenWidth *(9.0/16.0)-25);
+        make.height.mas_equalTo(kScreenWidth *(9.0/16.0));
+//        make.right.equalTo(ws.view.mas_right).offset(0);
         make.right.equalTo(ws.view.mas_right).offset(0);
     }];
     // 创建player按钮
@@ -125,19 +125,46 @@
     _contentLabel.lineBreakMode = NSLineBreakByCharWrapping;
     [_bgView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_cTlabel.mas_bottom).offset(10);
+        make.top.equalTo(_cTlabel.mas_bottom).offset(5);
         make.left.equalTo(ws.view.mas_left).offset(10);
-        make.bottom.equalTo(ws.view.mas_bottom).offset(-10);
+        make.bottom.equalTo(ws.view.mas_bottom).offset(-54);
         make.right.equalTo(ws.view.mas_right).offset(-10);
     }];
+    
+    // 添加手势操作
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc ]initWithTarget:self action:@selector(swipeClick:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionDown;
+    swipe.numberOfTouchesRequired = 2;
+    [_bgView addGestureRecognizer:swipe];
 }
 
+- (void)swipeClick:(UISwipeGestureRecognizer *)sendr
+{
+    [_videoController dismiss];
+}
+
+- (void)customBackButton
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 20, 20);
+    [btn setBackgroundImage:[UIImage imageNamed:@"back@2x"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = item;
+}
+// 返回按钮并结束播放
+- (void)backBtnClick
+{
+    [_videoController dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// 点击播放按钮
 - (void)playBtnClick
 {
     NSURL *url = [NSURL URLWithString:_detailPlayUrl];
     [self playerUrl:url];
 }
-
 
 - (void)playerUrl:(NSURL *)url
 {
@@ -154,22 +181,6 @@
     _videoController.contentURL = url;
 }
 
-//- (void)btnClick:(UIButton *)sender
-//{
-//    PlayerViewController *player = [[PlayerViewController alloc] init];
-//    NSURL *url = [NSURL URLWithString:_detailPlayUrl];
-//    player.url = url;
-//    player.imageUrl = _detailCoverBlurred;
-//    [self presentViewController:player animated:YES completion:^{
-//        
-//    }];
-//
-//}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -10,6 +10,5 @@
 
 @interface RankViewController : UIViewController
 
-//@property (nonatomic, strong) UIButton *wButton;
 
 @end

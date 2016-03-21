@@ -38,8 +38,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     KWS(ws);
     _wButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _wButton.tag = 100;
     [_wButton setTitle:@"周排行" forState:UIControlStateNormal];
     [_wButton setBackgroundColor:[UIColor whiteColor]];
+    [_wButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [_wButton setTitleColor:[UIColor colorWithRed:0.21 green:0.21 blue:0.21 alpha:1] forState:UIControlStateNormal];
     [_wButton setTitleColor:[UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1] forState:UIControlStateSelected];
     [self.view addSubview:_wButton];
@@ -50,8 +52,10 @@
         make.width.equalTo(@(kScreenWidth/3));
     }];
     _mButton = [[UIButton alloc] init];
+    _mButton.tag = 101;
     [_mButton setTitle:@"月排行" forState:UIControlStateNormal];
     [_mButton setBackgroundColor:[UIColor whiteColor]];
+    [_mButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [_mButton setTitleColor:[UIColor colorWithRed:0.21 green:0.21 blue:0.21 alpha:1] forState:UIControlStateNormal];
     [_mButton setTitleColor:[UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1] forState:UIControlStateSelected];
     [self.view addSubview:_mButton];
@@ -62,8 +66,10 @@
         make.width.equalTo(@(kScreenWidth/3));
     }];
     _tButton = [[UIButton alloc] init];
+    _tButton.tag = 102;
     [_tButton setTitle:@"总排行" forState:UIControlStateNormal];
     [_tButton setBackgroundColor:[UIColor whiteColor]];
+    [_tButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [_tButton setTitleColor:[UIColor colorWithRed:0.21 green:0.21 blue:0.21 alpha:1] forState:UIControlStateNormal];
     [_tButton setTitleColor:[UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1] forState:UIControlStateSelected];
     [self.view addSubview:_tButton];
@@ -93,7 +99,26 @@
     self.currentPage = 0;
     
 }
-
+- (void)setCurrentPage:(NSInteger)currentPage
+{
+    _currentPage = currentPage;
+    for (NSInteger i = 0; i <3; i++) {
+        UIButton *button = [self.view viewWithTag:100+i];
+        if (i == currentPage) {
+            button.selected = YES;
+        }else{
+            button.selected = NO;
+        }
+    }
+}
+- (void)btnClick:(UIButton *)btn
+{
+    NSInteger index = btn.tag - 100;
+    
+    [_pageViewController setViewControllers:@[_vcArray[index]] direction:index < _currentPage animated:YES completion:^(BOOL finished) {
+    }];
+    self.currentPage = index;
+}
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
     NSInteger index = [_vcArray indexOfObject:viewController];
@@ -117,7 +142,12 @@
     return _vcArray[index - 1];
 }
 
-
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    // pageViewController.viewControllers[0] 当前视图在次数组中第0个位置
+    UIViewController *vc = pageViewController.viewControllers[0];
+    self.currentPage = [_vcArray indexOfObject:vc];
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -125,14 +155,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

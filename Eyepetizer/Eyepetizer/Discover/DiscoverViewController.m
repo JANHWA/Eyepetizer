@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArray = [[NSMutableArray alloc] init];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self requestData];
     [self configUI];
 }

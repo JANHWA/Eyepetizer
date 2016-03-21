@@ -22,6 +22,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadData];
     [self configUI];
+
 }
 
 - (void)configUI
@@ -33,6 +34,7 @@
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_top"] forBarMetrics:UIBarMetricsCompact];
 
 }
+
 
 - (void)loadData
 {
@@ -49,7 +51,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 240;
+    return kScreenWidth *(9.0/16.0);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

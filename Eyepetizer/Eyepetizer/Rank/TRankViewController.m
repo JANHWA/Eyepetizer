@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor                 = [UIColor colorWithRed:0.99 green:0.91 blue:0.71 alpha:1];
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
@@ -25,6 +24,7 @@
 - (void)configUI
 {
     [super configUI];
+    [self customBackButton];
     [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 - (void)loadData
@@ -76,6 +76,22 @@
     [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+}
+
+- (void)customBackButton
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 20, 20);
+    [btn setBackgroundImage:[UIImage imageNamed:@"back@2x"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = item;
+    
+}
+
+- (void)backBtnClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
