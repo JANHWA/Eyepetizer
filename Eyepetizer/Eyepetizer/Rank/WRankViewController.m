@@ -77,7 +77,7 @@
     detail.detailCoverBlurred                 = model.blurred;
     detail.detailCoverForFeed                 = model.feed;
     detail.detailDescription                  = model.my_description;
-
+    detail.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

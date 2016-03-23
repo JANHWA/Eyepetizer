@@ -119,7 +119,15 @@
     // 内容简介
     _contentLabel               = [[UILabel alloc] init];
     _contentLabel.text          = _detailDescription;
-    _contentLabel.font          = [UIFont systemFontOfSize:20];
+    if (kScreenWidth == 320 && kScreenHeight == 480) {
+        _contentLabel.font          = [UIFont systemFontOfSize:17];
+    }else if (kScreenWidth == 320 && kScreenHeight == 568){
+        _contentLabel.font          = [UIFont systemFontOfSize:18];
+    }else if (kScreenWidth == 375 && kScreenHeight == 667){
+        _contentLabel.font          = [UIFont systemFontOfSize:20];
+    }else{
+        _contentLabel.font          = [UIFont systemFontOfSize:21];
+    }
     _contentLabel.textColor     = [UIColor colorWithRed:0.735 green:0.734 blue:0.750 alpha:1.000];
     _contentLabel.numberOfLines = 0;
     _contentLabel.lineBreakMode = NSLineBreakByCharWrapping;

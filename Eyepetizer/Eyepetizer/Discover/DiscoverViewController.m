@@ -84,6 +84,7 @@
 {
     ListViewController *vc = [[ListViewController alloc] init];
     vc.url                 = [_dataArray[indexPath.item] name];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     [_collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
