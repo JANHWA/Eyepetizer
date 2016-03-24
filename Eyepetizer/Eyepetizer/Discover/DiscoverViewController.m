@@ -34,6 +34,7 @@
 {
     [[CHNetWorking shareManager] requestData:kDiscover parameters:nil sucBlock:^(id responseObject) {
         NSArray *array = [DiscoverModel arrayOfModelsFromDictionaries:responseObject];
+        [_collectionView.header endRefreshing];
         [_dataArray addObjectsFromArray:array];
         [_collectionView reloadData];
         
@@ -55,6 +56,8 @@
     _collectionView.dataSource                = self;
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerClass:[JHCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    _collectionView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
+    [_collectionView.header beginRefreshing];
     [self.view addSubview:_collectionView];
 }
 

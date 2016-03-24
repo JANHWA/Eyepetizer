@@ -18,6 +18,7 @@
 #import "JHTableViewCell.h"
 #import "MJExtension.h"
 #import "DetailViewController.h"
+#import "MJRefresh.h"
 
 
 #pragma mark - 系统相关

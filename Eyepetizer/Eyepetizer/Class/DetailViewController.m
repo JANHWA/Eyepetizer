@@ -128,7 +128,7 @@
     }else{
         _contentLabel.font          = [UIFont systemFontOfSize:21];
     }
-    _contentLabel.textColor     = [UIColor colorWithRed:0.735 green:0.734 blue:0.750 alpha:1.000];
+    _contentLabel.textColor     = [UIColor colorWithRed:0.798 green:0.797 blue:0.815 alpha:1.000];
     _contentLabel.numberOfLines = 0;
     _contentLabel.lineBreakMode = NSLineBreakByCharWrapping;
     [_bgView addSubview:_contentLabel];

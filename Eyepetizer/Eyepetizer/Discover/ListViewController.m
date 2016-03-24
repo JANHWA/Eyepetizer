@@ -40,6 +40,10 @@
     NSString *urlString = [NSString stringWithFormat:kCategory,_url];
     NSString *url       = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[CHNetWorking shareManager] requestData:url parameters:nil sucBlock:^(id responseObject) {
+        [_tableView.header endRefreshing];
+        if (_dataArray != nil) {
+            [_dataArray removeAllObjects];
+        }
     NSArray *array      = responseObject[@"itemList"];
         for (NSDictionary *dict in array) {
     DetailModel *model  = [DetailModel mj_objectWithKeyValues:dict[@"data"]];

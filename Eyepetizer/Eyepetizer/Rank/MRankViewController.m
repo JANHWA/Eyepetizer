@@ -32,6 +32,8 @@
     _tableView.delegate   = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
+    _tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    [_tableView.header beginRefreshing];
     [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 - (void)loadData
@@ -40,6 +42,10 @@
         return @{@"my_description":@"description",@"feed":@"cover.feed",@"blurred":@"cover.blurred"};
     }];
     [[CHNetWorking shareManager] requestData:kMonthRank parameters:nil sucBlock:^(id responseObject) {
+        [_tableView.header endRefreshing];
+        if (_dataArray != nil) {
+            [_dataArray removeAllObjects];
+        }
         NSArray *array      = responseObject[@"itemList"];
         for (NSDictionary *dict in array) {
             MRankModel *model  = [MRankModel mj_objectWithKeyValues:dict[@"data"]];

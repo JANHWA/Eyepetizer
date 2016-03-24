@@ -17,23 +17,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     _dataArray                                = [[NSMutableArray alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadData];
     [self configUI];
-
 }
 
 - (void)configUI
 {
-    _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-44) style:UITableViewStylePlain];
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     _tableView.delegate   = self;
     _tableView.dataSource = self;
+    _tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    [_tableView.header beginRefreshing];
+    
     [self.view addSubview:_tableView];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_top"] forBarMetrics:UIBarMetricsCompact];
 
 }
+
 
 
 - (void)loadData

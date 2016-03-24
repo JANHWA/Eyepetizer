@@ -37,6 +37,10 @@
     NSDate *date                   = [[NSDate alloc] init];
     NSString *dateString           = [dateFormatter stringFromDate:date];
     [[CHNetWorking shareManager] requestData:[NSString stringWithFormat:kChoice,dateString] parameters:nil sucBlock:^(id responseObject) {
+        [_tableView.header endRefreshing];
+        if (_dataArray != nil) {
+            [_dataArray removeAllObjects];
+        }
     NSArray *array                 = responseObject[@"dailyList"];
         for (NSDictionary *dict in array) {
     NSArray *array2                = [ChoicModel arrayOfModelsFromDictionaries:dict[@"videoList"]];

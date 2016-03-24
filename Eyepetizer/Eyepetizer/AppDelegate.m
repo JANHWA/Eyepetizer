@@ -32,6 +32,7 @@
 {
     NSArray *className = @[@"ChoiceViewController",@"DiscoverViewController",@"RankViewController"];
     NSArray *titles = @[@"每日精选",@"发现更多",@"热门排行"];
+    NSArray *imageName = @[@"tabbar_me@2x",@"tabbar_discover@2x",@"btn_airplay_ipad@2x"];
     NSMutableArray *arrayM = [[NSMutableArray alloc] init];
     for (NSInteger i = 0; i < className.count; i++) {
         
@@ -39,7 +40,13 @@
         UIViewController *vc = [[class alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
         nav.tabBarItem.title = titles[i];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = titles[i];
+        label.textColor = [UIColor colorWithWhite:0.375 alpha:1.000];
+        vc.navigationItem.titleView = label;
         [arrayM addObject:nav];
+        nav.tabBarItem.image = [UIImage imageNamed:imageName[i]];
     }
     UITabBarController *tab = [[UITabBarController alloc] init];
     tab.viewControllers = arrayM;
