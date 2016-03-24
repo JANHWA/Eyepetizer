@@ -23,8 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
-    [self configUI];
-    
+    [self configUI];    
     return YES;
 }
 

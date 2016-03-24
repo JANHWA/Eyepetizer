@@ -67,7 +67,6 @@
         make.top.equalTo(_bgImage.mas_top).offset(0);
         make.left.equalTo(ws.view.mas_left).offset(0);
         make.height.mas_equalTo(kScreenWidth *(9.0/16.0));
-//        make.right.equalTo(ws.view.mas_right).offset(0);
         make.right.equalTo(ws.view.mas_right).offset(0);
     }];
     // 创建player按钮

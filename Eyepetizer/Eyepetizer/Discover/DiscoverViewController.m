@@ -35,6 +35,9 @@
     [[CHNetWorking shareManager] requestData:kDiscover parameters:nil sucBlock:^(id responseObject) {
         NSArray *array = [DiscoverModel arrayOfModelsFromDictionaries:responseObject];
         [_collectionView.header endRefreshing];
+        if (_dataArray != nil) {
+            [_dataArray removeAllObjects];
+        }
         [_dataArray addObjectsFromArray:array];
         [_collectionView reloadData];
         
@@ -56,7 +59,12 @@
     _collectionView.dataSource                = self;
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerClass:[JHCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    _collectionView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
+    [header setTitle:@"你微笑时好美" forState:MJRefreshStatePulling];
+    [header setTitle:@"OOH LA LA..." forState:MJRefreshStateRefreshing];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    _collectionView.header = header;
     [_collectionView.header beginRefreshing];
     [self.view addSubview:_collectionView];
 }

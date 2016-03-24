@@ -112,6 +112,7 @@
         }
     }
 }
+// 通过按钮切换页面
 - (void)btnClick:(UIButton *)btn
 {
     NSInteger index = btn.tag - 100;

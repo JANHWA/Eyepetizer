@@ -31,7 +31,10 @@
     _tableView.delegate   = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
-    _tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    [header setTitle:@"OOH LA LA..." forState:MJRefreshStateRefreshing];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    _tableView.header = header;
     [_tableView.header beginRefreshing];
     [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
 }
@@ -87,7 +90,9 @@
     [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
+/**
+ *    返回按钮
+ */
 - (void)customBackButton
 {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -29,7 +29,10 @@
     _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     _tableView.delegate   = self;
     _tableView.dataSource = self;
-    _tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    [header setTitle:@"OOH LA LA..." forState:MJRefreshStateRefreshing];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    _tableView.header = header;
     [_tableView.header beginRefreshing];
     
     [self.view addSubview:_tableView];
@@ -69,18 +72,18 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(JHTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CATransform3D rotation;//3D旋转
-
+    
     rotation                                  = CATransform3DMakeTranslation(0 ,50 ,20);
     rotation                                  = CATransform3DScale(rotation, 0.9, .9, 1);
-
+    
     rotation.m34                              = 1.0/ -600;
-
+    
     cell.layer.shadowColor                    = [[UIColor blackColor]CGColor];
     cell.layer.shadowOffset                   = CGSizeMake(10, 10);
     cell.alpha                                = 0;
-
+    
     cell.layer.transform                      = rotation;
-
+    
     [UIView beginAnimations:@"rotation" context:NULL];
     //旋转时间
     [UIView setAnimationDuration:1];
@@ -88,6 +91,7 @@
     cell.alpha                                = 1;
     cell.layer.shadowOffset                   = CGSizeMake(0, 0);
     [UIView commitAnimations];
+    
 }
 
 
