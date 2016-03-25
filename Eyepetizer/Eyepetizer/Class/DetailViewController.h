@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ChoicModel.h"
+#import "RootViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController :RootViewController
 
 
 

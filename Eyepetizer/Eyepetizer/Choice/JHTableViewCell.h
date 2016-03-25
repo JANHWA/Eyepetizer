@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectModel.h"
 
 @interface JHTableViewCell : UITableViewCell
 
@@ -14,5 +15,7 @@
 @property (nonatomic, copy) UILabel *titleL;
 @property (nonatomic, copy) UILabel *cWithTL;
 
+
+@property (nonatomic, strong) CollectModel *model;
 
 @end

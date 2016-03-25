@@ -18,4 +18,8 @@
 
 - (void)loadData;
 
+- (void)backBtnClick;
+
+- (void)customButton:(NSString *)imageName withLocation:(BOOL)location;
+
 @end

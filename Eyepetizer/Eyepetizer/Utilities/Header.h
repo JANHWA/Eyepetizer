@@ -19,6 +19,7 @@
 #import "MJExtension.h"
 #import "DetailViewController.h"
 #import "MJRefresh.h"
+#import "MagicalRecord.h"
 
 
 #pragma mark - 系统相关

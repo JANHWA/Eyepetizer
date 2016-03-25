@@ -23,6 +23,34 @@
     [self configUI];
 }
 
+- (void)customButton:(NSString *)imageName withLocation:(BOOL)location;
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 20, 20);
+    [btn setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    if (location) {
+        [btn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+        self.navigationItem.leftBarButtonItem = item;
+    }else {
+        [btn addTarget:self action:@selector(collectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+        self.navigationItem.rightBarButtonItem = item;
+    }
+}
+
+
+// 返回按钮并结束播放
+- (void)backBtnClick
+{
+    NSLog(@"子类需要重写backBtnClick");
+}
+
+- (void)collectBtnClick:(UIButton *)sender
+{
+    NSLog(@"子类需要重写EditBtnClick");
+}
+
 - (void)configUI
 {
     self.automaticallyAdjustsScrollViewInsets = YES;

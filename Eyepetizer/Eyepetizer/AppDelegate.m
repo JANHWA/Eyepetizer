@@ -10,6 +10,7 @@
 #import "ChoiceViewController.h"
 #import "DiscoverViewController.h"
 #import "RankViewController.h"
+#import "CollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,15 +24,24 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
+    
+//    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+//    
+//    dispatch_async(queue, ^{
+    
+        [MagicalRecord setupCoreDataStackWithStoreNamed:@"app.sqlite"];
+//    });
+    
+    
     [self configUI];    
     return YES;
 }
 
 - (void)configUI
 {
-    NSArray *className = @[@"ChoiceViewController",@"DiscoverViewController",@"RankViewController"];
-    NSArray *titles = @[@"每日精选",@"发现更多",@"热门排行"];
-    NSArray *imageName = @[@"tabbar_me@2x",@"tabbar_discover@2x",@"btn_airplay_ipad@2x"];
+    NSArray *className = @[@"ChoiceViewController",@"DiscoverViewController",@"RankViewController",@"CollectionViewController"];
+    NSArray *titles = @[@"每日精选",@"发现更多",@"热门排行",@"我的收藏"];
+    NSArray *imageName = @[@"tabbar_me@2x",@"tabbar_discover@2x",@"btn_airplay_ipad@2x",@"btn_airplay_ipad@2x"];
     NSMutableArray *arrayM = [[NSMutableArray alloc] init];
     for (NSInteger i = 0; i < className.count; i++) {
         
@@ -52,6 +62,12 @@
     self.window.rootViewController = tab;
 }
 
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    // 清除缓存
+    [MagicalRecord cleanUp];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -70,8 +86,5 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
 
 @end

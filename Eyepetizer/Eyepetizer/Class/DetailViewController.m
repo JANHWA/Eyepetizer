@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 #import "UIImageView+WebCache.h"
 #import "KRVideoPlayerController.h"
-
+#import "CollectModel.h"
 
 @interface DetailViewController ()
 {
@@ -21,6 +21,9 @@
     UILabel *_cTlabel;
     UILabel *_contentLabel;
     UIView *_bgView;
+    
+    // 收藏按钮
+    UIButton *_collectBtn;
     
 }
 
@@ -34,9 +37,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configUI];
-    [self customBackButton];
+    [self customButton:@"back" withLocation:YES];
+//    [self customButton:@"back" withLocation:NO];
+    
+    
 }
 
+- (void)loadData
+{
+    
+}
 - (void)configUI
 {
     KWS(ws);
@@ -138,6 +148,25 @@
         make.right.equalTo(ws.view.mas_right).offset(-10);
     }];
     
+    // 收藏按钮
+    _collectBtn = [[UIButton alloc] init];
+    _collectBtn.layer.cornerRadius = 5;
+    _collectBtn.backgroundColor = [UIColor colorWithRed:0.36 green:0.47 blue:0.60 alpha:1.00];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"btn_download_ipad"] forState:UIControlStateSelected];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"barbuttonicon_add"] forState:UIControlStateNormal];
+    [_bgView addSubview:_collectBtn];
+    
+     if ([CollectModel MR_findByAttribute:@"title" withValue:_detailTitle].count > 0) {
+           _collectBtn.selected = YES;
+      }
+    [_collectBtn addTarget:self action:@selector(collectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_collectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.top.equalTo(_frontImage.mas_bottom).offset(8);
+        make.right.equalTo(ws.view.mas_right).offset(-15);
+        make.width.height.mas_equalTo(30);
+    }];
+    
     // 添加手势操作
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc ]initWithTarget:self action:@selector(swipeClick:)];
     swipe.direction = UISwipeGestureRecognizerDirectionDown;
@@ -145,20 +174,42 @@
     [_bgView addGestureRecognizer:swipe];
 }
 
+/**
+ *    收藏按钮的方法
+ */
+
+- (void)collectBtnClick:(UIButton *)sender
+{
+    
+
+    if (sender.selected) {
+        // 当前状态是收藏,现在执行取消操作
+        CollectModel  *model = [[CollectModel MR_findByAttribute:@"title" withValue:_detailTitle ] firstObject];
+        [model MR_deleteEntity];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    }else{
+        // 当前状态没有收藏,现在执行收藏操作
+        CollectModel *model = [CollectModel MR_createEntity];
+        model.title = _detailTitle;
+        model.category = _detailCategory;
+        model.duration = [NSString stringWithFormat:@"%@",_detailDuration];
+        model.playUrl = _detailPlayUrl;
+        model.coverForFeed = _detailCoverForFeed;
+        model.my_description = _detailDescription;
+        model.coverBlurred = _detailCoverBlurred;
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    }
+    sender.selected = !sender.selected;
+    
+}
+
+
+
 - (void)swipeClick:(UISwipeGestureRecognizer *)sendr
 {
     [_videoController dismiss];
 }
 
-- (void)customBackButton
-{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, 20, 20);
-    [btn setBackgroundImage:[UIImage imageNamed:@"back@2x"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    self.navigationItem.leftBarButtonItem = item;
-}
 // 返回按钮并结束播放
 - (void)backBtnClick
 {
@@ -169,6 +220,7 @@
 // 点击播放按钮
 - (void)playBtnClick
 {
+    
     NSURL *url = [NSURL URLWithString:_detailPlayUrl];
     [self playerUrl:url];
 }
@@ -188,6 +240,9 @@
     _videoController.contentURL = url;
 }
 
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

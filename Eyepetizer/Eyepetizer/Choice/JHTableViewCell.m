@@ -61,6 +61,14 @@
     return self;
 }
 
+- (void)setModel:(CollectModel *)model
+{
+    _model = model;
+    [_imageV sd_setImageWithURL:[NSURL URLWithString:_model.coverForFeed]];
+    _titleL.text = _model.title;
+    _cWithTL.text = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
+}
+
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
