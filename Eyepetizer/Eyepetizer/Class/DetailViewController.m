@@ -24,7 +24,8 @@
     
     // 收藏按钮
     UIButton *_collectBtn;
-    
+    // 收藏提示
+    UILabel *_messageLabel;
 }
 
 @property(nonatomic, strong)KRVideoPlayerController *videoController;
@@ -38,7 +39,7 @@
     // Do any additional setup after loading the view.
     [self configUI];
     [self customButton:@"back" withLocation:YES];
-//    [self customButton:@"back" withLocation:NO];
+    [self customButton:@"common_share_light" withLocation:NO];
     
     
 }
@@ -166,6 +167,20 @@
         make.width.height.mas_equalTo(30);
     }];
     
+    // 提示Label
+    _messageLabel = [[UILabel alloc] init];
+    _messageLabel.backgroundColor = [UIColor grayColor];
+    _messageLabel.alpha = 0;
+    _messageLabel.textAlignment = NSTextAlignmentCenter;
+    _messageLabel.textColor = [UIColor whiteColor];
+    [_bgView addSubview:_messageLabel];
+    [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_bgView.mas_centerX);
+        make.bottom.equalTo(_bgView.mas_bottom).offset(-100);
+        make.width.mas_equalTo(80);
+        make.height.mas_equalTo(30);
+    }];
+    
     // 添加手势操作
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc ]initWithTarget:self action:@selector(swipeClick:)];
     swipe.direction = UISwipeGestureRecognizerDirectionDown;
@@ -179,13 +194,20 @@
 
 - (void)collectBtnClick:(UIButton *)sender
 {
-    
-
     if (sender.selected) {
         // 当前状态是收藏,现在执行取消操作
         CollectModel  *model = [[CollectModel MR_findByAttribute:@"title" withValue:_detailTitle ] firstObject];
         [model MR_deleteEntity];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        [UIView animateWithDuration:1.5 animations:^{
+            _messageLabel.text = @"取消收藏";
+            _messageLabel.alpha = 1;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:1.5 animations:^{
+                _messageLabel.alpha = 0;
+            }];
+        }];
+        
     }else{
         // 当前状态没有收藏,现在执行收藏操作
         CollectModel *model = [CollectModel MR_createEntity];
@@ -197,10 +219,27 @@
         model.my_description = _detailDescription;
         model.coverBlurred = _detailCoverBlurred;
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        [UIView animateWithDuration:1.5 animations:^{
+            _messageLabel.text = @"收藏成功";
+            _messageLabel.alpha = 1;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:1.5 animations:^{
+                _messageLabel.alpha = 0;
+            }];;
+        }];
     }
     sender.selected = !sender.selected;
-    
 }
+
+/*
+ 分享按钮按钮
+ */
+- (void)shareBtnClick:(UIButton *)sender
+{
+    
+    NSLog(@"分享-----");
+}
+
 - (void)swipeClick:(UISwipeGestureRecognizer *)sendr
 {
     [_videoController dismiss];
@@ -236,10 +275,6 @@
     }
     _videoController.contentURL = url;
 }
-
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

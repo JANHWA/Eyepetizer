@@ -33,7 +33,7 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
         self.navigationItem.leftBarButtonItem = item;
     }else {
-        [btn addTarget:self action:@selector(collectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
         self.navigationItem.rightBarButtonItem = item;
     }
@@ -46,7 +46,7 @@
     NSLog(@"子类需要重写backBtnClick");
 }
 
-- (void)collectBtnClick:(UIButton *)sender
+- (void)shareBtnClick:(UIButton *)sender
 {
     NSLog(@"子类需要重写EditBtnClick");
 }

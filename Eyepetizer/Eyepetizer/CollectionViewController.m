@@ -28,29 +28,27 @@
 {
     
 //    [self customButton:@"back" withLocation:YES];
-    self.automaticallyAdjustsScrollViewInsets = YES;
-    _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self createBgImage];
+    _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-44) style:UITableViewStylePlain];
     _tableView.delegate   = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
-    if (_dataArray==nil) {
-        [self createBgImage];
-    }
 }
 
 - (void)createBgImage
 {
     KWS(ws);
     _bgImage = [[UIImageView alloc] init];
-    _bgImage.image = [UIImage imageNamed:@"Dark_Management_Add"];
+    _bgImage.image = [UIImage imageNamed:@"nothing"];
     [self.view addSubview:_bgImage];
-    [self.view bringSubviewToFront:_bgImage];
     [_bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(ws.view.mas_centerX);
         make.centerY.equalTo(ws.view.mas_centerY);
-        make.width.height.mas_equalTo(100);
+        make.width.mas_equalTo(kScreenHeight*(9.0/16.0));
+        make.height.mas_equalTo(kScreenWidth);
     }];
     
 }
@@ -133,6 +131,12 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:num inSection:0];
     [_dataArray removeObjectAtIndex:indexPath.row];
     // 从_tableView删除Cell
+    if (_dataArray.count == 0) {
+        [self.view bringSubviewToFront:_bgImage];
+        _bgImage.alpha = 1;
+    }else{
+        _bgImage.alpha = 0;
+    }
     [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     
 }
@@ -152,6 +156,12 @@
 {
     _dataArray = [[CollectModel MR_findAll] mutableCopy];
     [_tableView reloadData];
+    if (_dataArray.count == 0) {
+        [self.view bringSubviewToFront:_bgImage];
+        _bgImage.alpha = 1;
+    }else{
+        _bgImage.alpha = 0;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
