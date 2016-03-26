@@ -11,6 +11,9 @@
 
 
 @interface CollectionViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    UIImageView *_bgImage;
+}
 
 @end
 
@@ -29,8 +32,27 @@
     _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     _tableView.delegate   = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
+    if (_dataArray==nil) {
+        [self createBgImage];
+    }
+}
+
+- (void)createBgImage
+{
+    KWS(ws);
+    _bgImage = [[UIImageView alloc] init];
+    _bgImage.image = [UIImage imageNamed:@"Dark_Management_Add"];
+    [self.view addSubview:_bgImage];
+    [self.view bringSubviewToFront:_bgImage];
+    [_bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(ws.view.mas_centerX);
+        make.centerY.equalTo(ws.view.mas_centerY);
+        make.width.height.mas_equalTo(100);
+    }];
+    
 }
 
 //- (void)backBtnClick

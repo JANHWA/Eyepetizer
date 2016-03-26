@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1C25D81CA6918B00E54FE4 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC1C25D71CA6918B00E54FE4 /* Asset.xcassets */; };
 		BC31810E1C9E7C57008EAE01 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31810D1C9E7C57008EAE01 /* DiscoverViewController.m */; };
 		BC3181111C9E862F008EAE01 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3181101C9E862F008EAE01 /* ListViewController.m */; };
 		BC3181141C9E8D48008EAE01 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3181131C9E8D48008EAE01 /* DetailModel.m */; };
@@ -20,7 +21,6 @@
 		BC3181321C9EA3AF008EAE01 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3181261C9EA3AF008EAE01 /* NSObject+MJKeyValue.m */; };
 		BC3181331C9EA3AF008EAE01 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3181281C9EA3AF008EAE01 /* NSObject+MJProperty.m */; };
 		BC3181341C9EA3AF008EAE01 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31812A1C9EA3AF008EAE01 /* NSString+MJExtension.m */; };
-		BC37EC3D1CA3D5E5008F47E3 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC37EC3C1CA3D5E5008F47E3 /* Asset.xcassets */; };
 		BC37EC3F1CA3D845008F47E3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC37EC3E1CA3D845008F47E3 /* Launch Screen.storyboard */; };
 		BC4C21061C9D244E00CF66FB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = BC4C20F31C9D244E00CF66FB /* .gitkeep */; };
 		BC4C21071C9D244E00CF66FB /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4C20F41C9D244E00CF66FB /* kr-video-player-close@2x.png */; };
@@ -171,6 +171,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC1C25D71CA6918B00E54FE4 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		BC31810C1C9E7C57008EAE01 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		BC31810D1C9E7C57008EAE01 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		BC31810F1C9E862F008EAE01 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
@@ -198,7 +199,6 @@
 		BC3181281C9EA3AF008EAE01 /* NSObject+MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		BC3181291C9EA3AF008EAE01 /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		BC31812A1C9EA3AF008EAE01 /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
-		BC37EC3C1CA3D5E5008F47E3 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		BC37EC3E1CA3D845008F47E3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BC4C20F31C9D244E00CF66FB /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		BC4C20F41C9D244E00CF66FB /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
@@ -1002,8 +1002,8 @@
 		BCEE85FD1C9BDC730031B6C0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				BC37EC3C1CA3D5E5008F47E3 /* Asset.xcassets */,
 				BC37EC3E1CA3D845008F47E3 /* Launch Screen.storyboard */,
+				BC1C25D71CA6918B00E54FE4 /* Asset.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1280,6 +1280,7 @@
 			files = (
 				BC4C21121C9D244E00CF66FB /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				BC4C21071C9D244E00CF66FB /* kr-video-player-close@2x.png in Resources */,
+				BC1C25D81CA6918B00E54FE4 /* Asset.xcassets in Resources */,
 				BC37EC3F1CA3D845008F47E3 /* Launch Screen.storyboard in Resources */,
 				BC4C21091C9D244E00CF66FB /* kr-video-player-fullscreen@2x.png in Resources */,
 				BC4C210D1C9D244E00CF66FB /* kr-video-player-play@2x.png in Resources */,
@@ -1289,7 +1290,6 @@
 				BC4C210A1C9D244E00CF66FB /* kr-video-player-fullscreen@3x.png in Resources */,
 				BC4C21081C9D244E00CF66FB /* kr-video-player-close@3x.png in Resources */,
 				BC4C210B1C9D244E00CF66FB /* kr-video-player-pause@2x.png in Resources */,
-				BC37EC3D1CA3D5E5008F47E3 /* Asset.xcassets in Resources */,
 				BC4C21101C9D244E00CF66FB /* kr-video-player-point@3x.png in Resources */,
 				BCAAD31B1CA37A1500116D52 /* MJRefresh.bundle in Resources */,
 				BC4C210C1C9D244E00CF66FB /* kr-video-player-pause@3x.png in Resources */,
@@ -1563,7 +1563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Eyepetizer/Utilities/PrefixHeader.pch";
 				INFOPLIST_FILE = Eyepetizer/Info.plist;
@@ -1578,7 +1578,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Eyepetizer/Utilities/PrefixHeader.pch";
 				INFOPLIST_FILE = Eyepetizer/Info.plist;

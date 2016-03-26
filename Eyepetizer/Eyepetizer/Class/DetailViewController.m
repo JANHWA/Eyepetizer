@@ -82,7 +82,7 @@
     // 创建player按钮
     _playButton = [[UIButton alloc] init];
     [_bgView addSubview:_playButton];
-    [_playButton setBackgroundImage:[UIImage imageNamed:@"btn_play_iPad"] forState:UIControlStateNormal];
+    [_playButton setBackgroundImage:[UIImage imageNamed:@"btn_play"] forState:UIControlStateNormal];
     [_playButton addTarget:self action:@selector(playBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_playButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_frontImage.mas_centerX);
@@ -129,9 +129,9 @@
     _contentLabel               = [[UILabel alloc] init];
     _contentLabel.text          = _detailDescription;
     if (kScreenWidth == 320 && kScreenHeight == 480) {
-        _contentLabel.font          = [UIFont systemFontOfSize:17];
+        _contentLabel.font          = [UIFont systemFontOfSize:15];
     }else if (kScreenWidth == 320 && kScreenHeight == 568){
-        _contentLabel.font          = [UIFont systemFontOfSize:18];
+        _contentLabel.font          = [UIFont systemFontOfSize:17];
     }else if (kScreenWidth == 375 && kScreenHeight == 667){
         _contentLabel.font          = [UIFont systemFontOfSize:20];
     }else{
@@ -144,16 +144,15 @@
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_cTlabel.mas_bottom).offset(5);
         make.left.equalTo(ws.view.mas_left).offset(10);
-        make.bottom.equalTo(ws.view.mas_bottom).offset(-54);
+        make.bottom.equalTo(ws.view.mas_bottom).offset(-20);
         make.right.equalTo(ws.view.mas_right).offset(-10);
     }];
     
     // 收藏按钮
     _collectBtn = [[UIButton alloc] init];
     _collectBtn.layer.cornerRadius = 5;
-    _collectBtn.backgroundColor = [UIColor colorWithRed:0.36 green:0.47 blue:0.60 alpha:1.00];
-    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"btn_download_ipad"] forState:UIControlStateSelected];
-    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"barbuttonicon_add"] forState:UIControlStateNormal];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"Dark_Management_Add"] forState:UIControlStateNormal];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"Dark_Management_Cancel"] forState:UIControlStateSelected];
     [_bgView addSubview:_collectBtn];
     
      if ([CollectModel MR_findByAttribute:@"title" withValue:_detailTitle].count > 0) {
@@ -202,9 +201,6 @@
     sender.selected = !sender.selected;
     
 }
-
-
-
 - (void)swipeClick:(UISwipeGestureRecognizer *)sendr
 {
     [_videoController dismiss];
@@ -224,6 +220,7 @@
     NSURL *url = [NSURL URLWithString:_detailPlayUrl];
     [self playerUrl:url];
 }
+
 
 - (void)playerUrl:(NSURL *)url
 {

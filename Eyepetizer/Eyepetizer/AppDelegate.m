@@ -24,15 +24,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
-    
-//    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
-//    
-//    dispatch_async(queue, ^{
-    
-        [MagicalRecord setupCoreDataStackWithStoreNamed:@"app.sqlite"];
-//    });
-    
-    
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"app.sqlite"];
+
     [self configUI];    
     return YES;
 }
@@ -41,7 +34,7 @@
 {
     NSArray *className = @[@"ChoiceViewController",@"DiscoverViewController",@"RankViewController",@"CollectionViewController"];
     NSArray *titles = @[@"每日精选",@"发现更多",@"热门排行",@"我的收藏"];
-    NSArray *imageName = @[@"tabbar_me@2x",@"tabbar_discover@2x",@"btn_airplay_ipad@2x",@"btn_airplay_ipad@2x"];
+    NSArray *imageName = @[@"home",@"tabbar_discover",@"btn_airplay_normal",@"person"];
     NSMutableArray *arrayM = [[NSMutableArray alloc] init];
     for (NSInteger i = 0; i < className.count; i++) {
         
@@ -49,11 +42,9 @@
         UIViewController *vc = [[class alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
         nav.tabBarItem.title = titles[i];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.text = titles[i];
-        label.textColor = [UIColor colorWithWhite:0.375 alpha:1.000];
-        vc.navigationItem.titleView = label;
+        UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 120, 30)];
+        logo.image = [UIImage imageNamed:@"logo"];
+        vc.navigationItem.titleView = logo;
         [arrayM addObject:nav];
         nav.tabBarItem.image = [UIImage imageNamed:imageName[i]];
     }
