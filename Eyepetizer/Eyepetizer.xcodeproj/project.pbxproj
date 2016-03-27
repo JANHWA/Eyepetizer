@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC1C25D81CA6918B00E54FE4 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC1C25D71CA6918B00E54FE4 /* Asset.xcassets */; };
 		BC31810E1C9E7C57008EAE01 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31810D1C9E7C57008EAE01 /* DiscoverViewController.m */; };
 		BC3181111C9E862F008EAE01 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3181101C9E862F008EAE01 /* ListViewController.m */; };
 		BC3181141C9E8D48008EAE01 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3181131C9E8D48008EAE01 /* DetailModel.m */; };
@@ -100,6 +99,7 @@
 		BCB3860A1CA40FCF00CEBF56 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB386091CA40FCF00CEBF56 /* CollectionViewController.m */; };
 		BCB6FFD61C9E759600B7B1C8 /* DiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB6FFD51C9E759600B7B1C8 /* DiscoverModel.m */; };
 		BCB6FFDA1C9E765D00B7B1C8 /* JHCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB6FFD91C9E765D00B7B1C8 /* JHCollectionViewCell.m */; };
+		BCBECF401CA7D16C00B4F1EA /* Launch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCBECF3F1CA7D16C00B4F1EA /* Launch.xcassets */; };
 		BCC0732D1C9ED04A00D5924B /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0732C1C9ED04A00D5924B /* RankViewController.m */; };
 		BCC073301C9EDD8200D5924B /* WRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0732F1C9EDD8200D5924B /* WRankViewController.m */; };
 		BCC073331C9EDD8E00D5924B /* MRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC073321C9EDD8E00D5924B /* MRankViewController.m */; };
@@ -171,7 +171,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC1C25D71CA6918B00E54FE4 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		BC31810C1C9E7C57008EAE01 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		BC31810D1C9E7C57008EAE01 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		BC31810F1C9E862F008EAE01 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
@@ -350,6 +349,7 @@
 		BCB6FFD51C9E759600B7B1C8 /* DiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverModel.m; sourceTree = "<group>"; };
 		BCB6FFD81C9E765D00B7B1C8 /* JHCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCollectionViewCell.h; sourceTree = "<group>"; };
 		BCB6FFD91C9E765D00B7B1C8 /* JHCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCollectionViewCell.m; sourceTree = "<group>"; };
+		BCBECF3F1CA7D16C00B4F1EA /* Launch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Launch.xcassets; sourceTree = "<group>"; };
 		BCC0732B1C9ED04A00D5924B /* RankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
 		BCC0732C1C9ED04A00D5924B /* RankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
 		BCC0732E1C9EDD8200D5924B /* WRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRankViewController.h; sourceTree = "<group>"; };
@@ -1003,7 +1003,7 @@
 			isa = PBXGroup;
 			children = (
 				BC37EC3E1CA3D845008F47E3 /* Launch Screen.storyboard */,
-				BC1C25D71CA6918B00E54FE4 /* Asset.xcassets */,
+				BCBECF3F1CA7D16C00B4F1EA /* Launch.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1280,11 +1280,11 @@
 			files = (
 				BC4C21121C9D244E00CF66FB /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				BC4C21071C9D244E00CF66FB /* kr-video-player-close@2x.png in Resources */,
-				BC1C25D81CA6918B00E54FE4 /* Asset.xcassets in Resources */,
 				BC37EC3F1CA3D845008F47E3 /* Launch Screen.storyboard in Resources */,
 				BC4C21091C9D244E00CF66FB /* kr-video-player-fullscreen@2x.png in Resources */,
 				BC4C210D1C9D244E00CF66FB /* kr-video-player-play@2x.png in Resources */,
 				BC4C210E1C9D244E00CF66FB /* kr-video-player-play@3x.png in Resources */,
+				BCBECF401CA7D16C00B4F1EA /* Launch.xcassets in Resources */,
 				BC4C21061C9D244E00CF66FB /* .gitkeep in Resources */,
 				BC4C21111C9D244E00CF66FB /* kr-video-player-shrinkscreen@2x.png in Resources */,
 				BC4C210A1C9D244E00CF66FB /* kr-video-player-fullscreen@3x.png in Resources */,

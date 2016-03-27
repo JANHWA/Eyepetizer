@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "bulletscreen_icon_like.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Dark_Management_Add@2x.png",
       "scale" : "2x"
     },
     {

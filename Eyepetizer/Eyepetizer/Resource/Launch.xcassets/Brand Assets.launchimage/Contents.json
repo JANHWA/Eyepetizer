@@ -19,6 +19,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
+      "filename" : "launchImages640*960.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
@@ -30,13 +31,6 @@
       "filename" : "launchImages640*1136.png",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
-      "scale" : "2x"
-    },
-    {
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "launchImages640*960.png",
-      "extent" : "full-screen",
       "scale" : "2x"
     },
     {

@@ -39,8 +39,6 @@
     // Do any additional setup after loading the view.
     [self configUI];
     [self customButton:@"back" withLocation:YES];
-    [self customButton:@"common_share_light" withLocation:NO];
-    
     
 }
 
@@ -152,8 +150,8 @@
     // 收藏按钮
     _collectBtn = [[UIButton alloc] init];
     _collectBtn.layer.cornerRadius = 5;
-    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"Dark_Management_Add"] forState:UIControlStateNormal];
-    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"Dark_Management_Cancel"] forState:UIControlStateSelected];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"bulletscreen_icon_like"] forState:UIControlStateNormal];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"bulletscreen_icon_like_"] forState:UIControlStateSelected];
     [_bgView addSubview:_collectBtn];
     
      if ([CollectModel MR_findByAttribute:@"title" withValue:_detailTitle].count > 0) {

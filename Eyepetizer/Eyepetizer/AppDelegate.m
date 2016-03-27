@@ -11,7 +11,6 @@
 #import "DiscoverViewController.h"
 #import "RankViewController.h"
 #import "CollectionViewController.h"
-
 @interface AppDelegate ()
 
 @end
@@ -24,6 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
+    
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"app.sqlite"];
 
     [self configUI];    
