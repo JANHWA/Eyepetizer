@@ -39,7 +39,6 @@
     // Do any additional setup after loading the view.
     [self configUI];
     [self customButton:@"back" withLocation:YES];
-    
 }
 
 - (void)loadData
@@ -234,8 +233,6 @@
  */
 - (void)shareBtnClick:(UIButton *)sender
 {
-    
-    NSLog(@"分享-----");
 }
 
 - (void)swipeClick:(UISwipeGestureRecognizer *)sendr

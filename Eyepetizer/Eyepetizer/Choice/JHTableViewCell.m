@@ -14,8 +14,7 @@
 @implementation JHTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
-
+   
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -68,9 +67,6 @@
     _titleL.text = _model.title;
     _cWithTL.text = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
 }
-
-
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

@@ -21,13 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
 }
 - (void)configUI
 {
-    
-//    [self customButton:@"back" withLocation:YES];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createBgImage];
     _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-44) style:UITableViewStylePlain];
@@ -52,11 +49,6 @@
     }];
     
 }
-
-//- (void)backBtnClick
-//{
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-//}
 
 /**
  *    加载存储在本地的数据
