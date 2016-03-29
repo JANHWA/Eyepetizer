@@ -27,7 +27,7 @@
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createBgImage];
-    _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-44) style:UITableViewStylePlain];
+    _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-44-64) style:UITableViewStylePlain];
     _tableView.delegate   = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -139,13 +139,12 @@
 }
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    //    NSString *str = _dataArray[sourceIndexPath.row];
     [_dataArray removeObjectAtIndex:sourceIndexPath.row];
-    //    [_dataArray insertObject:str atIndex:destinationIndexPath.row];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     _dataArray = [[CollectModel MR_findAll] mutableCopy];
     [_tableView reloadData];
     if (_dataArray.count == 0) {
@@ -160,15 +159,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

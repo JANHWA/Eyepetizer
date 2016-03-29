@@ -25,7 +25,7 @@
     [self.window makeKeyAndVisible];
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"app.sqlite"];
-
+         
     [self configUI];    
     return YES;
 }

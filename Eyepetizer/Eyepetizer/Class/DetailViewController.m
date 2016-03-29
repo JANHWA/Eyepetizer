@@ -94,7 +94,7 @@
     _titleLabel           = [[UILabel alloc] init];
     _titleLabel.text      = _detailTitle;
     _titleLabel.font      = [UIFont boldSystemFontOfSize:20];
-    _titleLabel.textColor = [UIColor colorWithRed:0.909 green:0.912 blue:0.921 alpha:1.000];
+    _titleLabel.textColor = [UIColor whiteColor];
     [_bgView addSubview:_titleLabel];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_frontImage.mas_bottom).offset(35);
@@ -109,7 +109,7 @@
     [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLabel.mas_bottom).offset(2);
         make.left.equalTo(ws.view.mas_left).offset(10);
-        make.height.mas_equalTo(3);
+        make.height.mas_equalTo(2);
         make.width.mas_equalTo(kScreenWidth*0.5);
     }];
     // 分类和时间
@@ -166,7 +166,7 @@
     
     // 提示Label
     _messageLabel = [[UILabel alloc] init];
-    _messageLabel.backgroundColor = [UIColor grayColor];
+    _messageLabel.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.500];
     _messageLabel.alpha = 0;
     _messageLabel.textAlignment = NSTextAlignmentCenter;
     _messageLabel.textColor = [UIColor whiteColor];
@@ -245,6 +245,7 @@
 {
     [_videoController dismiss];
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 // 点击播放按钮
@@ -254,6 +255,7 @@
     NSURL *url = [NSURL URLWithString:_detailPlayUrl];
     [self playerUrl:url];
 }
+
 
 
 - (void)playerUrl:(NSURL *)url

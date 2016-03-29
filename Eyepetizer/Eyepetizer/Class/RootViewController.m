@@ -103,13 +103,11 @@
     
     rotation                                  = CATransform3DMakeTranslation(0 ,50 ,20);
     rotation                                  = CATransform3DScale(rotation, 0.9, .9, 1);
-    
     rotation.m34                              = 1.0/ -600;
     
     cell.layer.shadowColor                    = [[UIColor blackColor]CGColor];
     cell.layer.shadowOffset                   = CGSizeMake(10, 10);
     cell.alpha                                = 0;
-    
     cell.layer.transform                      = rotation;
     
     [UIView beginAnimations:@"rotation" context:NULL];

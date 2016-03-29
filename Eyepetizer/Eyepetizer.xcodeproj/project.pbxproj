@@ -47,6 +47,7 @@
 		BC4C22F51C9D5C1F00CF66FB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22EA1C9D5C1F00CF66FB /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		BC4C22F61C9D5C1F00CF66FB /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22EC1C9D5C1F00CF66FB /* View+MASAdditions.m */; };
 		BC4C22F91C9D7AAB00CF66FB /* JHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C22F81C9D7AAB00CF66FB /* JHTableViewCell.m */; };
+		BC4C287D1CAA7DC80078AEA9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4C287C1CAA7DC80078AEA9 /* CoreData.framework */; };
 		BCAAD30D1CA37A1500116D52 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAD2E31CA37A1500116D52 /* MJRefreshAutoFooter.m */; };
 		BCAAD30E1CA37A1500116D52 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAD2E51CA37A1500116D52 /* MJRefreshBackFooter.m */; };
 		BCAAD30F1CA37A1500116D52 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAD2E71CA37A1500116D52 /* MJRefreshComponent.m */; };
@@ -242,6 +243,7 @@
 		BC4C22ED1C9D5C1F00CF66FB /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		BC4C22F71C9D7AAB00CF66FB /* JHTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTableViewCell.h; sourceTree = "<group>"; };
 		BC4C22F81C9D7AAB00CF66FB /* JHTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTableViewCell.m; sourceTree = "<group>"; };
+		BC4C287C1CAA7DC80078AEA9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BCAAD2E21CA37A1500116D52 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		BCAAD2E31CA37A1500116D52 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		BCAAD2E41CA37A1500116D52 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC4C287D1CAA7DC80078AEA9 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +923,7 @@
 		BCEE85C51C9BDACE0031B6C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BC4C287C1CAA7DC80078AEA9 /* CoreData.framework */,
 				BCEE85C61C9BDACE0031B6C0 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1241,7 +1245,7 @@
 				TargetAttributes = {
 					BCEE85C11C9BDACE0031B6C0 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = ZRTPJ6Q4BR;
+						DevelopmentTeam = VKR7W5TBR4;
 					};
 					BCEE85DA1C9BDACF0031B6C0 = {
 						CreatedOnToolsVersion = 7.1;
@@ -1565,12 +1569,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Eyepetizer/Utilities/PrefixHeader.pch";
 				INFOPLIST_FILE = Eyepetizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JanHwa.Eyepetizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1580,12 +1586,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Eyepetizer/Utilities/PrefixHeader.pch";
 				INFOPLIST_FILE = Eyepetizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JanHwa.Eyepetizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

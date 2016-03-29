@@ -12,8 +12,6 @@
 
 @interface DetailViewController :RootViewController
 
-
-
 @property (nonatomic, copy) NSString *detailTitle;
 @property (nonatomic, copy) NSString *detailCategory;
 @property (nonatomic, copy) NSString *detailDuration;
