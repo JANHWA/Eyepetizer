@@ -41,6 +41,13 @@
     [self customButton:@"back" withLocation:YES];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    [_videoController dismiss];
+}
+
 - (void)loadData
 {
     

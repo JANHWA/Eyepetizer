@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 
-@interface RootViewController ()
+@interface RootViewController ()<UIGestureRecognizerDelegate>
 
 
 @end
@@ -21,7 +21,40 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadData];
     [self configUI];
+    
+    [self back];
 }
+
+- (void)back {
+    
+    //1.获取系统interactivePopGestureRecognizer对象的target对象
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    //2.创建滑动手势，taregt设置interactivePopGestureRecognizer的target，所以当界面滑动的时候就会自动调用target的action方法。
+    //handleNavigationTransition是私有类_UINavigationInteractiveTransition的方法，系统主要在这个方法里面实现动画的。
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] init];
+    [pan addTarget:target action:NSSelectorFromString(@"handleNavigationTransition:")];
+    //3.设置代理
+    pan.delegate = self;
+    //4.添加到导航控制器的视图上
+    [self.navigationController.view addGestureRecognizer:pan];
+    
+    //5.禁用系统的滑动手势
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+}
+
+#pragma mark - 滑动开始会触发
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    //只有导航的根控制器不需要右滑的返回的功能。
+    if (self.navigationController.viewControllers.count <= 1)
+    {
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 - (void)customButton:(NSString *)imageName withLocation:(BOOL)location;
 {

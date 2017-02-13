@@ -1245,7 +1245,7 @@
 				TargetAttributes = {
 					BCEE85C11C9BDACE0031B6C0 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = VKR7W5TBR4;
+						DevelopmentTeam = XJ4AE9QWEH;
 					};
 					BCEE85DA1C9BDACF0031B6C0 = {
 						CreatedOnToolsVersion = 7.1;
@@ -1570,6 +1570,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XJ4AE9QWEH;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Eyepetizer/Utilities/PrefixHeader.pch";
 				INFOPLIST_FILE = Eyepetizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1587,6 +1588,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XJ4AE9QWEH;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Eyepetizer/Utilities/PrefixHeader.pch";
 				INFOPLIST_FILE = Eyepetizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
