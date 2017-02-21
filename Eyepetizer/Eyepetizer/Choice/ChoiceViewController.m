@@ -34,7 +34,8 @@
     [dateFormatter setDateFormat:@"yyyyMMdd"];
     NSDate *date                   = [[NSDate alloc] init];
     NSString *dateString           = [dateFormatter stringFromDate:date];
-    [[CHNetWorking shareManager] requestData:[NSString stringWithFormat:kChoice,dateString] parameters:nil sucBlock:^(id responseObject) {
+    [[CHNetWorking shareManager] requestData:[NSString stringWithFormat:kChoice,dateString]
+                                  parameters:nil sucBlock:^(id responseObject) {
         [_tableView.header endRefreshing];
         if (_dataArray != nil) {
             [_dataArray removeAllObjects];

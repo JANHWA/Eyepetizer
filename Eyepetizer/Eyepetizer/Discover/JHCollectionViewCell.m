@@ -32,6 +32,8 @@
         _title               = [[UILabel alloc] init];
         _title.textAlignment = NSTextAlignmentCenter;
         _title.textColor     = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        _title.shadowColor   = [UIColor grayColor];
+        _title.shadowOffset  = CGSizeMake(1, 1);
         _title.font          = [UIFont systemFontOfSize:20];
         [self.contentView addSubview:_title];
         [_title mas_makeConstraints:^(MASConstraintMaker *make) {

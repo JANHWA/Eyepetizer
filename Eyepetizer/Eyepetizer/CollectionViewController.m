@@ -103,6 +103,7 @@
     
     [alert addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
+        [_tableView reloadData];
     }]];
     // 单击YES按钮执行的代码块
     [alert addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

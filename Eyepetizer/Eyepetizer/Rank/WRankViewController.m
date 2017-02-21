@@ -30,6 +30,8 @@
     _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-44-84) style:UITableViewStylePlain];
     _tableView.delegate   = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     [self.view addSubview:_tableView];
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     [header setTitle:@"OOH LA LA..." forState:MJRefreshStateRefreshing];

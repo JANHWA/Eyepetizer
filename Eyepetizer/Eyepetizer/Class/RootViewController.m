@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     _dataArray                                = [[NSMutableArray alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadData];
@@ -48,7 +50,6 @@
     //只有导航的根控制器不需要右滑的返回的功能。
     if (self.navigationController.viewControllers.count <= 1)
     {
-        
         return NO;
     }
     
@@ -90,6 +91,7 @@
     _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     _tableView.delegate   = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     [header setTitle:@"OOH LA LA..." forState:MJRefreshStateRefreshing];
     header.lastUpdatedTimeLabel.hidden = YES;

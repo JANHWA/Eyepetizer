@@ -11,7 +11,7 @@
 #import "KRVideoPlayerController.h"
 #import "CollectModel.h"
 
-@interface DetailViewController ()
+@interface DetailViewController ()<KRVideoPlayerControllerProtocol>
 {
     UIImageView *_bgImage;
     UIImageView *_frontImage;
@@ -29,7 +29,6 @@
 }
 
 @property(nonatomic, strong)KRVideoPlayerController *videoController;
-
 @end
 
 @implementation DetailViewController
@@ -39,13 +38,21 @@
     // Do any additional setup after loading the view.
     [self configUI];
     [self customButton:@"back" withLocation:YES];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [_videoController dismiss];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+
 }
 
 - (void)loadData
@@ -54,6 +61,9 @@
 }
 - (void)configUI
 {
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
     KWS(ws);
     _bgView = [[UIView alloc] init];
     _bgView.backgroundColor = [UIColor whiteColor];
@@ -186,10 +196,10 @@
     }];
     
     // 添加手势操作
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc ]initWithTarget:self action:@selector(swipeClick:)];
-    swipe.direction = UISwipeGestureRecognizerDirectionDown;
-    swipe.numberOfTouchesRequired = 2;
-    [_bgView addGestureRecognizer:swipe];
+//    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc ]initWithTarget:self action:@selector(swipeClick:)];
+//    swipe.direction = UISwipeGestureRecognizerDirectionDown;
+//    swipe.numberOfTouchesRequired = 2;
+//    [_bgView addGestureRecognizer:swipe];
 }
 
 /**
@@ -244,7 +254,7 @@
 
 - (void)swipeClick:(UISwipeGestureRecognizer *)sendr
 {
-    [_videoController dismiss];
+//    [_videoController dismiss];
 }
 
 // 返回按钮并结束播放
@@ -269,6 +279,7 @@
 {
     if (!self.videoController) {
         _videoController = [[KRVideoPlayerController alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenWidth *(9.0/16.0))];
+        _videoController.delegate = self;
         [_videoController setShouldAutoplay:YES];
         [_videoController setFullscreen:YES animated:YES];
         __weak typeof(self) ws = self;
@@ -278,6 +289,19 @@
         [_videoController showInWindow];
     }
     _videoController.contentURL = url;
+}
+
+- (void)KRVideoPlayerIsFull:(BOOL)isFull {
+    
+    if (isFull) {
+        // 全屏播放
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES];
+    } else {
+        // 非全屏播放
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [self.navigationController setNavigationBarHidden:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
