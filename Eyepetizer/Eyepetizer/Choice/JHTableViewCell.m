@@ -38,7 +38,7 @@
     _titleL.textColor      = [UIColor whiteColor];
     _titleL.font = [UIFont boldSystemFontOfSize:20];
     _titleL.shadowColor   = [UIColor grayColor];
-    _titleL.shadowOffset  = CGSizeMake(1, 1);
+    _titleL.shadowOffset  = CGSizeMake(0.5, 0.5);
     [self.contentView addSubview:_titleL];
     [_titleL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_imageV.mas_top).offset(50);

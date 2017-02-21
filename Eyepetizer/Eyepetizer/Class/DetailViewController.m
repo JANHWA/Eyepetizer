@@ -143,6 +143,8 @@
     // 内容简介
     _contentLabel               = [[UILabel alloc] init];
     _contentLabel.text          = _detailDescription;
+    _contentLabel.shadowColor   = [UIColor grayColor];
+    _contentLabel.shadowOffset  = CGSizeMake(0.5, 0.5);
     if (kScreenWidth == 320 && kScreenHeight == 480) {
         _contentLabel.font          = [UIFont systemFontOfSize:15];
     }else if (kScreenWidth == 320 && kScreenHeight == 568){
