@@ -10,10 +10,11 @@
 #import "UIImageView+WebCache.h"
 #import "KRVideoPlayerController.h"
 #import "CollectModel.h"
+#import "JHDetailView.h"
 
 @interface DetailViewController ()<KRVideoPlayerControllerProtocol>
 {
-    UIImageView *_bgImage;
+//    UIImageView *_bgImage;
     UIImageView *_frontImage;
     UIButton *_playButton;
     UILabel *_titleLabel;
@@ -29,6 +30,8 @@
 }
 
 @property(nonatomic, strong)KRVideoPlayerController *videoController;
+@property (strong, nonatomic) JHDetailView *detailView;
+
 @end
 
 @implementation DetailViewController
@@ -36,7 +39,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self initView];
+    
     [self configUI];
+    
     [self customButton:@"back" withLocation:YES];
     
 }
@@ -59,44 +66,31 @@
 {
     
 }
-- (void)configUI
-{
+
+- (void)initView {
+    
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     KWS(ws);
-    _bgView = [[UIView alloc] init];
-    _bgView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:_bgView];
-    [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.view.mas_top).offset(0);
-        make.left.equalTo(ws.view.mas_left).offset(0);
-        make.bottom.equalTo(ws.view.mas_bottom).offset(0);
-        make.right.equalTo(ws.view.mas_right).offset(0);
+    
+    [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
-    // 创建背景视图
-    _bgImage             = [[UIImageView alloc] init];
-    [_bgImage sd_setImageWithURL:[NSURL URLWithString:_detailCoverBlurred]];
-    [_bgView addSubview:_bgImage];
-    [_bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.view.mas_top).offset(64);
-        make.left.equalTo(ws.view.mas_left).offset(0);
-        make.bottom.equalTo(ws.view.mas_bottom).offset(0);
-        make.right.equalTo(ws.view.mas_right).offset(0);
-    }];
+    
     // 创建前面的视图
     _frontImage             = [[UIImageView alloc] init];
     [_frontImage sd_setImageWithURL:[NSURL URLWithString:_detailCoverForFeed]];
-    [_bgView addSubview:_frontImage];
+    [self.view addSubview:_frontImage];
     [_frontImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_bgImage.mas_top).offset(0);
+        make.top.equalTo(ws.view.mas_top).offset(64);
         make.left.equalTo(ws.view.mas_left).offset(0);
         make.height.mas_equalTo(kScreenWidth *(9.0/16.0));
         make.right.equalTo(ws.view.mas_right).offset(0);
     }];
     // 创建player按钮
     _playButton = [[UIButton alloc] init];
-    [_bgView addSubview:_playButton];
+    [self.view addSubview:_playButton];
     [_playButton setBackgroundImage:[UIImage imageNamed:@"btn_play"] forState:UIControlStateNormal];
     [_playButton addTarget:self action:@selector(playBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_playButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -104,83 +98,6 @@
         make.centerY.equalTo(_frontImage.mas_centerY);
         make.width.mas_equalTo(100);
         make.height.equalTo(_playButton.mas_width);
-        
-    }];
-    
-    // 标题
-    _titleLabel           = [[UILabel alloc] init];
-    _titleLabel.text      = _detailTitle;
-    _titleLabel.font      = [UIFont boldSystemFontOfSize:20];
-    _titleLabel.textColor = [UIColor whiteColor];
-    [_bgView addSubview:_titleLabel];
-    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_frontImage.mas_bottom).offset(35);
-        make.left.equalTo(ws.view.mas_left).offset(10);
-        make.height.mas_equalTo(30);
-        make.right.equalTo(ws.view.mas_right).offset(0);
-    }];
-    // 下划线
-    _lineView                 = [[UIView alloc] init];
-    _lineView.backgroundColor = [UIColor colorWithRed:0.703 green:0.693 blue:0.713 alpha:1.000];
-    [_bgView addSubview:_lineView];
-    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_titleLabel.mas_bottom).offset(2);
-        make.left.equalTo(ws.view.mas_left).offset(10);
-        make.height.mas_equalTo(2);
-        make.width.mas_equalTo(kScreenWidth*0.5);
-    }];
-    // 分类和时间
-    _cTlabel           = [[UILabel alloc] init];
-    _cTlabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.82 alpha:1];
-    _cTlabel.text      = [NSString stringWithFormat:@"#%@ / %@\"",_detailCategory,_detailDuration];
-    [_bgView addSubview:_cTlabel];
-    [_cTlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_lineView.mas_bottom).offset(8);
-        make.left.equalTo(ws.view.mas_left).offset(10);
-        make.height.mas_equalTo(30);
-        make.right.equalTo(ws.view.mas_right).offset(0);
-    }];
-    // 内容简介
-    _contentLabel               = [[UILabel alloc] init];
-    _contentLabel.text          = _detailDescription;
-    _contentLabel.shadowColor   = [UIColor grayColor];
-    _contentLabel.shadowOffset  = CGSizeMake(0.5, 0.5);
-    if (kScreenWidth == 320 && kScreenHeight == 480) {
-        _contentLabel.font          = [UIFont systemFontOfSize:15];
-    }else if (kScreenWidth == 320 && kScreenHeight == 568){
-        _contentLabel.font          = [UIFont systemFontOfSize:17];
-    }else if (kScreenWidth == 375 && kScreenHeight == 667){
-        _contentLabel.font          = [UIFont systemFontOfSize:20];
-    }else{
-        _contentLabel.font          = [UIFont systemFontOfSize:21];
-    }
-    _contentLabel.textColor     = [UIColor colorWithRed:0.798 green:0.797 blue:0.815 alpha:1.000];
-    _contentLabel.numberOfLines = 0;
-    _contentLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    [_bgView addSubview:_contentLabel];
-    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_cTlabel.mas_bottom).offset(5);
-        make.left.equalTo(ws.view.mas_left).offset(10);
-        make.bottom.equalTo(ws.view.mas_bottom).offset(-20);
-        make.right.equalTo(ws.view.mas_right).offset(-10);
-    }];
-    
-    // 收藏按钮
-    _collectBtn = [[UIButton alloc] init];
-    _collectBtn.layer.cornerRadius = 5;
-    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"bulletscreen_icon_like"] forState:UIControlStateNormal];
-    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"bulletscreen_icon_like_"] forState:UIControlStateSelected];
-    [_bgView addSubview:_collectBtn];
-    
-     if ([CollectModel MR_findByAttribute:@"title" withValue:_detailTitle].count > 0) {
-           _collectBtn.selected = YES;
-      }
-    [_collectBtn addTarget:self action:@selector(collectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_collectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.top.equalTo(_frontImage.mas_bottom).offset(8);
-        make.right.equalTo(ws.view.mas_right).offset(-15);
-        make.width.height.mas_equalTo(30);
     }];
     
     // 提示Label
@@ -189,19 +106,32 @@
     _messageLabel.alpha = 0;
     _messageLabel.textAlignment = NSTextAlignmentCenter;
     _messageLabel.textColor = [UIColor whiteColor];
-    [_bgView addSubview:_messageLabel];
+    [self.view addSubview:_messageLabel];
     [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_bgView.mas_centerX);
-        make.bottom.equalTo(_bgView.mas_bottom).offset(-100);
+        make.centerX.equalTo(ws.view.mas_centerX);
+        make.bottom.equalTo(ws.view.mas_bottom).offset(-100);
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(30);
     }];
     
-    // 添加手势操作
-//    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc ]initWithTarget:self action:@selector(swipeClick:)];
-//    swipe.direction = UISwipeGestureRecognizerDirectionDown;
-//    swipe.numberOfTouchesRequired = 2;
-//    [_bgView addGestureRecognizer:swipe];
+}
+- (void)configUI
+{
+    
+    NSDictionary *dict = @{
+                           @"title":_detailTitle,
+                           @"detailCategory":_detailCategory,
+                           @"detailDuration":_detailDuration,
+                           @"detailCoverBlurred":_detailCoverBlurred,
+                           @"detailDescription":_detailDescription
+                           };
+    
+    [self.detailView showContentWithDic:dict];
+
+     if ([CollectModel MR_findByAttribute:@"title" withValue:_detailTitle].count > 0) {
+           _collectBtn.selected = YES;
+      }
+    [self.view bringSubviewToFront:_messageLabel];
 }
 
 /**
@@ -304,6 +234,28 @@
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
         [self.navigationController setNavigationBarHidden:NO];
     }
+}
+
+/**
+ 懒加载
+
+ @return
+ */
+- (JHDetailView *)detailView {
+    
+    
+    if (_detailView == nil) {
+        _detailView = [[JHDetailView alloc] init];
+        [self.view addSubview:_detailView];
+        KWS(ws);
+        _collectBtn = _detailView.collectionBtn;
+        _detailView.buttonBlock = ^(UIButton *sender) {
+          
+            [ws collectBtnClick:sender];
+        };
+    }
+    
+    return _detailView;
 }
 
 - (void)didReceiveMemoryWarning {

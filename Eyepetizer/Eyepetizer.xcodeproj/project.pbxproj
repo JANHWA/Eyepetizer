@@ -153,6 +153,7 @@
 		BCEE86851C9BF6320031B6C0 /* ChoicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE86841C9BF6320031B6C0 /* ChoicModel.m */; };
 		BCEE875C1C9C26560031B6C0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE875B1C9C26560031B6C0 /* DetailViewController.m */; };
 		C54B7E171E5E781100E6E816 /* JHRootPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C54B7E161E5E781100E6E816 /* JHRootPageView.m */; };
+		D04425821E5F0AE1007295C2 /* JHDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D04425811E5F0AE1007295C2 /* JHDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -465,6 +466,8 @@
 		BCEE875B1C9C26560031B6C0 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		C54B7E151E5E781100E6E816 /* JHRootPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRootPageView.h; sourceTree = "<group>"; };
 		C54B7E161E5E781100E6E816 /* JHRootPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRootPageView.m; sourceTree = "<group>"; };
+		D04425801E5F0AE1007295C2 /* JHDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDetailView.h; sourceTree = "<group>"; };
+		D04425811E5F0AE1007295C2 /* JHDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDetailView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1004,6 +1007,8 @@
 				BCEE86001C9BDDF60031B6C0 /* PrefixHeader.pch */,
 				BCEE86071C9BECFE0031B6C0 /* CHNetWorking.h */,
 				BCEE86081C9BECFE0031B6C0 /* CHNetWorking.m */,
+				D04425801E5F0AE1007295C2 /* JHDetailView.h */,
+				D04425811E5F0AE1007295C2 /* JHDetailView.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1446,6 +1451,7 @@
 				BC3181331C9EA3AF008EAE01 /* NSObject+MJProperty.m in Sources */,
 				BCEE86621C9BF0950031B6C0 /* AFURLSessionManager.m in Sources */,
 				BCC073391C9EE7BD00D5924B /* WRankModel.m in Sources */,
+				D04425821E5F0AE1007295C2 /* JHDetailView.m in Sources */,
 				BCB385FE1CA40F8700CEBF56 /* NSPersistentStore+MagicalRecord.m in Sources */,
 				BCB385F31CA40F8700CEBF56 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				BCAAD31A1CA37A1500116D52 /* MJRefreshStateHeader.m in Sources */,
