@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    _dataArray                                = [[NSMutableArray alloc] init];
+    _dataArray = [[NSMutableArray alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadData];
     [self configUI];

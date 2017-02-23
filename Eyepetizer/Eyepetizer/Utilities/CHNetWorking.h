@@ -20,7 +20,10 @@ typedef void(^FailureBlock)();
 + (instancetype)shareManager;
 
 
-- (void)requestData:(NSString *)urlString parameters:(NSDictionary *)dic sucBlock:(SucBlock)sucBlock failureBlock:(FailureBlock)failureBlock;
+- (void)requestData:(NSString *)urlString
+         parameters:(NSDictionary *)dic
+           sucBlock:(SucBlock)sucBlock
+       failureBlock:(FailureBlock)failureBlock;
 
 
 @end

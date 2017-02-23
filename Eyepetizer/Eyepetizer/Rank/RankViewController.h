@@ -11,5 +11,4 @@
 @interface RankViewController : UIViewController
 
 
-
 @end

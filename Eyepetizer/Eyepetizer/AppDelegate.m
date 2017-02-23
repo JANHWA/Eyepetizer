@@ -36,6 +36,7 @@
     NSArray *titles = @[@"每日精选",@"发现更多",@"热门排行",@"我的收藏"];
     NSArray *imageName = @[@"home",@"tabbar_discover",@"btn_airplay_normal",@"person"];
     NSMutableArray *arrayM = [[NSMutableArray alloc] init];
+    
     for (NSInteger i = 0; i < className.count; i++) {
         
         Class class = NSClassFromString(className[i]);
@@ -48,6 +49,7 @@
         [arrayM addObject:nav];
         nav.tabBarItem.image = [UIImage imageNamed:imageName[i]];
     }
+    
     UITabBarController *tab = [[UITabBarController alloc] init];
     tab.viewControllers = arrayM;
     self.window.rootViewController = tab;

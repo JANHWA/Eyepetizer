@@ -152,6 +152,7 @@
 		BCEE86821C9BF6030031B6C0 /* ChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE86811C9BF6030031B6C0 /* ChoiceViewController.m */; };
 		BCEE86851C9BF6320031B6C0 /* ChoicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE86841C9BF6320031B6C0 /* ChoicModel.m */; };
 		BCEE875C1C9C26560031B6C0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE875B1C9C26560031B6C0 /* DetailViewController.m */; };
+		C54B7E171E5E781100E6E816 /* JHRootPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C54B7E161E5E781100E6E816 /* JHRootPageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,6 +463,8 @@
 		BCEE86841C9BF6320031B6C0 /* ChoicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoicModel.m; sourceTree = "<group>"; };
 		BCEE875A1C9C26560031B6C0 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		BCEE875B1C9C26560031B6C0 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		C54B7E151E5E781100E6E816 /* JHRootPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRootPageView.h; sourceTree = "<group>"; };
+		C54B7E161E5E781100E6E816 /* JHRootPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRootPageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -995,6 +998,8 @@
 		BCEE85FC1C9BDC650031B6C0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C54B7E151E5E781100E6E816 /* JHRootPageView.h */,
+				C54B7E161E5E781100E6E816 /* JHRootPageView.m */,
 				BCEE85FF1C9BDDE80031B6C0 /* Header.h */,
 				BCEE86001C9BDDF60031B6C0 /* PrefixHeader.pch */,
 				BCEE86071C9BECFE0031B6C0 /* CHNetWorking.h */,
@@ -1436,6 +1441,7 @@
 				BCEE86681C9BF0950031B6C0 /* JSONAPI.m in Sources */,
 				BCB385F81CA40F8700CEBF56 /* NSManagedObjectContext+MagicalChainSave.m in Sources */,
 				BCB386011CA40F8700CEBF56 /* MagicalRecord+ErrorHandling.m in Sources */,
+				C54B7E171E5E781100E6E816 /* JHRootPageView.m in Sources */,
 				BC31812D1C9EA3AF008EAE01 /* MJProperty.m in Sources */,
 				BC3181331C9EA3AF008EAE01 /* NSObject+MJProperty.m in Sources */,
 				BCEE86621C9BF0950031B6C0 /* AFURLSessionManager.m in Sources */,

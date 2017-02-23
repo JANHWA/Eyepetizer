@@ -15,17 +15,20 @@
 
 + (instancetype)shareManager
 {
-    static CHNetWorking *manager           = nil;
+    static CHNetWorking *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (!manager) {
-    manager                                = [[CHNetWorking alloc] init];
+            manager = [[CHNetWorking alloc] init];
         }
     });
     return manager;
 }
 
-- (void)requestData:(NSString *)urlString parameters:(NSDictionary *)dic sucBlock:(SucBlock)sucBlock failureBlock:(FailureBlock)failureBlock
+- (void)requestData:(NSString *)urlString
+         parameters:(NSDictionary *)dic
+           sucBlock:(SucBlock)sucBlock
+       failureBlock:(FailureBlock)failureBlock
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:urlString parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {

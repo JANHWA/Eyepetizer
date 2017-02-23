@@ -50,9 +50,9 @@
         if (_dataArray != nil) {
             [_dataArray removeAllObjects];
         }
-    NSArray *array                            = responseObject[@"itemList"];
+        NSArray *array                            = responseObject[@"itemList"];
         for (NSDictionary *dict in array) {
-    WRankModel *model                         = [WRankModel mj_objectWithKeyValues:dict[@"data"]];
+            WRankModel *model                         = [WRankModel mj_objectWithKeyValues:dict[@"data"]];
             [_dataArray addObject:model];
         }
         [_tableView reloadData];
