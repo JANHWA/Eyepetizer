@@ -36,7 +36,7 @@
     _titleL                = [[UILabel alloc] init];
     _titleL.textAlignment  = NSTextAlignmentCenter;
     _titleL.textColor      = [UIColor whiteColor];
-    _titleL.font = [UIFont boldSystemFontOfSize:20];
+    _titleL.font = [UIFont boldSystemFontOfSize:15.0];
     _titleL.shadowColor   = [UIColor grayColor];
     _titleL.shadowOffset  = CGSizeMake(0.5, 0.5);
     [self.contentView addSubview:_titleL];
@@ -49,7 +49,7 @@
         // 分类和时间
     _cWithTL               = [[UILabel alloc] init];
     _cWithTL.textAlignment = NSTextAlignmentCenter;
-    _cWithTL.font          = [UIFont boldSystemFontOfSize:18];
+    _cWithTL.font          = [UIFont boldSystemFontOfSize:15.0];
     _cWithTL.textColor     = [UIColor whiteColor];
     [self.contentView addSubview:_cWithTL];
     [_cWithTL mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -37,7 +37,6 @@
             label.textColor = [UIColor whiteColor];
             self.titleLabel = label;
             self.titleLabel.adjustsFontSizeToFitWidth = YES;
-            self.titleLabel.text = @"人类是多么善良";
         } else if (i == 1) {
             self.lineLabel = label;
             self.lineLabel.backgroundColor = [UIColor colorWithRed:0.703 green:0.693 blue:0.713 alpha:1.000];
@@ -45,14 +44,13 @@
             
             self.typeLabel = label;
             self.typeLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.82 alpha:1];
-            self.typeLabel.text = @"#科普／357“";
         } else {
             self.contentLabel = label;
             self.contentLabel.numberOfLines = 0;
+            self.contentLabel.font = [UIFont systemFontOfSize:14.0];
             self.contentLabel.textColor = [UIColor colorWithRed:0.798 green:0.797 blue:0.815 alpha:1.000];
             self.contentLabel.shadowColor = [UIColor grayColor];
             self.contentLabel.shadowOffset  = CGSizeMake(0.5, 0.5);
-            self.contentLabel.text = @"利用单例设计模式嵌套懒加载，封装本地工具类，避免对本地数据多次读写，同时对内存中的本地缓存数据在必要时及时更新";
         }
     }
     
