@@ -67,7 +67,6 @@ static const CGFloat kVideoPlayerControllerAnimationTimeInterval = 0.3f;
     } completion:^(BOOL finished) {
         
     }];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)dismiss
@@ -155,6 +154,7 @@ static const CGFloat kVideoPlayerControllerAnimationTimeInterval = 0.3f;
     [self play];
     self.videoControl.playButton.hidden = YES;
     self.videoControl.pauseButton.hidden = NO;
+    
 }
 
 - (void)pauseButtonClick
@@ -167,6 +167,10 @@ static const CGFloat kVideoPlayerControllerAnimationTimeInterval = 0.3f;
 - (void)closeButtonClick
 {
     [self dismiss];
+    
+    if ([self.delegate respondsToSelector:@selector(KRVideoPlayerIsFull:)]) {
+        [self.delegate KRVideoPlayerIsFull:NO];
+    }
 }
 
 - (void)fullScreenButtonClick
@@ -174,6 +178,7 @@ static const CGFloat kVideoPlayerControllerAnimationTimeInterval = 0.3f;
     if (self.isFullscreenMode) {
         return;
     }
+    
     self.originFrame = self.view.frame;
     CGFloat height = [[UIScreen mainScreen] bounds].size.width;
     CGFloat width = [[UIScreen mainScreen] bounds].size.height;
@@ -186,10 +191,17 @@ static const CGFloat kVideoPlayerControllerAnimationTimeInterval = 0.3f;
         self.videoControl.fullScreenButton.hidden = YES;
         self.videoControl.shrinkScreenButton.hidden = NO;
     }];
+    
+    if ([self.delegate respondsToSelector:@selector(KRVideoPlayerIsFull:)]) {
+        [self.delegate KRVideoPlayerIsFull:YES];
+    }
 }
 
 - (void)shrinkScreenButtonClick
 {
+    if ([self.delegate respondsToSelector:@selector(KRVideoPlayerIsFull:)]) {
+        [self.delegate KRVideoPlayerIsFull:NO];
+    }
     if (!self.isFullscreenMode) {
         return;
     }

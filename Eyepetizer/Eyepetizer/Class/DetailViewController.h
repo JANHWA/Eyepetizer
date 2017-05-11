@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ChoicModel.h"
+#import "RootViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController :RootViewController
 
-@property (nonatomic, strong) ChoicModel *model;
+@property (nonatomic, copy) NSString *detailTitle;
+@property (nonatomic, copy) NSString *detailCategory;
+@property (nonatomic, copy) NSString *detailDuration;
+@property (nonatomic, copy) NSString *detailPlayUrl;
+@property (nonatomic, copy) NSString *detailCoverForFeed;
+@property (nonatomic, copy) NSString *detailDescription;
+@property (nonatomic, copy) NSString *detailCoverBlurred;
+
 
 @end

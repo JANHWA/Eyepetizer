@@ -7,8 +7,9 @@
 //
 
 #import "ChoiceViewController.h"
-#import "ChoiceCell.h"
 #import "DetailViewController.h"
+#import "JHTableViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface ChoiceViewController ()
 
@@ -18,32 +19,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self loadData];
+    
+//    [self configUI];
 }
 
 - (void)configUI
 {
     [super configUI];
-    [_tableView registerNib:[UINib nibWithNibName:@"ChoiceCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    [_tableView registerClass:[JHTableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
 - (void)loadData
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyyMMdd"];
-    NSDate *date = [[NSDate alloc] init];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    [[CHNetWorking shareManager] requestData:[NSString stringWithFormat:kChoice,dateString] parameters:nil sucBlock:^(id responseObject) {
-        NSArray *array = responseObject[@"dailyList"];
+    NSDate *date                   = [[NSDate alloc] init];
+    NSString *dateString           = [dateFormatter stringFromDate:date];
+    [[CHNetWorking shareManager] requestData:[NSString stringWithFormat:kChoice,dateString]
+                                  parameters:nil sucBlock:^(id responseObject) {
+        [_tableView.header endRefreshing];
+        if (_dataArray != nil) {
+            [_dataArray removeAllObjects];
+        }
+    NSArray *array                 = responseObject[@"dailyList"];
         for (NSDictionary *dict in array) {
-            NSArray *array2 = [ChoicModel arrayOfModelsFromDictionaries:dict[@"videoList"]];
-            NSLog(@"+++++%@",dict[@"videoList"]);
+    NSArray *array2                = [ChoicModel arrayOfModelsFromDictionaries:dict[@"videoList"]];
             [_dataArray addObjectsFromArray:array2];
         }
         [_tableView reloadData];
     } failureBlock:^{
-        
+
     }];
 }
 
@@ -53,70 +59,40 @@
 {
     return _dataArray.count;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 240;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellId = @"cell";
-    ChoiceCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    cell.model = _dataArray[indexPath.row];
-    NSLog(@"+++++%@",cell.model);
+    static NSString *cellId        = @"cell";
+    JHTableViewCell *cell          = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+    cell                           = [[JHTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    ChoicModel *model              = _dataArray[indexPath.row];
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:model.coverForFeed]];
+    cell.titleL.text               = model.title;
+    cell.cWithTL.text              = [NSString stringWithFormat:@"#%@  / %@\"",model.category,model.duration];
     return cell;
 }
-- (void)tableView:(UITableView *)tableView willDisplayCell:(ChoiceCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CATransform3D rotation;//3D旋转
-    
-    rotation = CATransform3DMakeTranslation(0 ,50 ,20);
-    rotation = CATransform3DScale(rotation, 0.9, .9, 1);
-    
-    rotation.m34 = 1.0/ -600;
-    
-    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
-    cell.layer.shadowOffset = CGSizeMake(10, 10);
-    cell.alpha = 0;
-    
-    cell.layer.transform = rotation;
-    
-    [UIView beginAnimations:@"rotation" context:NULL];
-    //旋转时间
-    [UIView setAnimationDuration:1];
-    cell.layer.transform = CATransform3DIdentity;
-    cell.alpha = 1;
-    cell.layer.shadowOffset = CGSizeMake(0, 0);
-    [UIView commitAnimations];
-    cell.model = _dataArray[indexPath.row];
-}
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailViewController *detail = [[DetailViewController alloc] init];
-    detail.model = _dataArray[indexPath.row];
-    
+    DetailViewController *detail   = [[DetailViewController alloc] init];
+    ChoicModel *model              = _dataArray[indexPath.row];
+    detail.detailTitle             = model.title;
+    detail.detailCategory          = model.category;
+    detail.detailPlayUrl           = model.playUrl;
+    detail.detailDuration          = model.duration;
+    detail.detailCoverBlurred      = model.coverBlurred;
+    detail.detailCoverForFeed      = model.coverForFeed;
+    detail.detailDescription       = model.my_description;
+    detail.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

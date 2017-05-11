@@ -25,7 +25,10 @@
     return manager;
 }
 
-- (void)requestData:(NSString *)urlString parameters:(NSDictionary *)dic sucBlock:(SucBlock)sucBlock failureBlock:(FailureBlock)failureBlock
+- (void)requestData:(NSString *)urlString
+         parameters:(NSDictionary *)dic
+           sucBlock:(SucBlock)sucBlock
+       failureBlock:(FailureBlock)failureBlock
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:urlString parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {

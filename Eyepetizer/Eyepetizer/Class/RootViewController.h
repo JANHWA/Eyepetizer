@@ -18,4 +18,10 @@
 
 - (void)loadData;
 
+- (void)backBtnClick;
+
+- (void)shareBtnClick:(UIButton *)sender;
+
+- (void)customButton:(NSString *)imageName withLocation:(BOOL)location;
+
 @end

@@ -9,11 +9,28 @@
 #import "DetailViewController.h"
 #import "UIImageView+WebCache.h"
 #import "KRVideoPlayerController.h"
-#import "PlayerViewController.h"
+#import "CollectModel.h"
+#import "JHDetailView.h"
 
-@interface DetailViewController ()
+@interface DetailViewController ()<KRVideoPlayerControllerProtocol>
+{
+//    UIImageView *_bgImage;
+    UIImageView *_frontImage;
+    UIButton *_playButton;
+    UILabel *_titleLabel;
+    UIView *_lineView;
+    UILabel *_cTlabel;
+    UILabel *_contentLabel;
+    UIView *_bgView;
+    
+    // 收藏按钮
+    UIButton *_collectBtn;
+    // 收藏提示
+    UILabel *_messageLabel;
+}
 
-
+@property(nonatomic, strong)KRVideoPlayerController *videoController;
+@property (strong, nonatomic) JHDetailView *detailView;
 
 @end
 
@@ -22,73 +39,223 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:0.54 green:0.52 blue:0.5 alpha:1];
+    
+    [self initView];
+    
     [self configUI];
+    
+    [self customButton:@"back" withLocation:YES];
+    
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [_videoController dismiss];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+
+}
+
+- (void)loadData
+{
+    
+}
+
+- (void)initView {
+    
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    KWS(ws);
+    
+    [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    
+    // 创建前面的视图
+    _frontImage             = [[UIImageView alloc] init];
+    [_frontImage sd_setImageWithURL:[NSURL URLWithString:_detailCoverForFeed]];
+    [self.view addSubview:_frontImage];
+    [_frontImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(ws.view.mas_top).offset(64);
+        make.left.equalTo(ws.view.mas_left).offset(0);
+        make.height.mas_equalTo(kScreenWidth *(9.0/16.0));
+        make.right.equalTo(ws.view.mas_right).offset(0);
+    }];
+    // 创建player按钮
+    _playButton = [[UIButton alloc] init];
+    [self.view addSubview:_playButton];
+    [_playButton setBackgroundImage:[UIImage imageNamed:@"btn_play"] forState:UIControlStateNormal];
+    [_playButton addTarget:self action:@selector(playBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [_playButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_frontImage.mas_centerX);
+        make.centerY.equalTo(_frontImage.mas_centerY);
+        make.width.mas_equalTo(100);
+        make.height.equalTo(_playButton.mas_width);
+    }];
+    
+    // 提示Label
+    _messageLabel = [[UILabel alloc] init];
+    _messageLabel.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.500];
+    _messageLabel.alpha = 0;
+    _messageLabel.textAlignment = NSTextAlignmentCenter;
+    _messageLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:_messageLabel];
+    [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(ws.view.mas_centerX);
+        make.bottom.equalTo(ws.view.mas_bottom).offset(-100);
+        make.width.mas_equalTo(80);
+        make.height.mas_equalTo(30);
+    }];
+    
+}
 - (void)configUI
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 300)];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[_model coverForFeed]]];
-     [self.view addSubview:imageView];
     
-    imageView.userInteractionEnabled = YES;
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake((kScreenWidth-60)*0.5, 120, 60, 60);
-    [btn setBackgroundImage:[UIImage imageNamed:@"btn_play"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [imageView addSubview:btn];
+    NSDictionary *dict = @{
+                           @"title":_detailTitle,
+                           @"detailCategory":_detailCategory,
+                           @"detailDuration":_detailDuration,
+                           @"detailCoverBlurred":_detailCoverBlurred,
+                           @"detailDescription":_detailDescription
+                           };
     
-    // 创建底部背景图
-    UIImageView *bgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64 + 300, kScreenWidth, kScreenHeight - 64 - 300)];
-    [bgImage sd_setImageWithURL:[NSURL URLWithString:_model.coverBlurred]];
-    [self.view addSubview:bgImage];
-    
-    // 创建标题
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, kScreenWidth - 20, 30)];
-    label.text = _model.title;
-    label.font = [UIFont systemFontOfSize:18];
-    label.textColor = [UIColor colorWithRed:0.909 green:0.912 blue:0.921 alpha:1.000];
-    [bgImage addSubview:label];
-    
-    // 创建下划线
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 37, kScreenWidth*0.5, 2)];
-    line.backgroundColor = [UIColor colorWithRed:0.703 green:0.693 blue:0.713 alpha:1.000];
-    [bgImage addSubview:line];
-    
-    // 创建类型及时长
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 41, kScreenWidth, 30)];
-    label2.text = [NSString stringWithFormat:@"#%@ / %@\"",_model.category,_model.duration];
-    label2.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.82 alpha:1];
-    [bgImage addSubview:label2];
-    
-    // 创建描述label
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 65, kScreenWidth-15-15, 180)];
-    label3.text = _model.my_description;
-    label3.textColor = [UIColor colorWithRed:0.856 green:0.855 blue:0.874 alpha:1.000];
-    label3.font = [UIFont systemFontOfSize:19];
-    label3.lineBreakMode = NSLineBreakByCharWrapping;
-//    label3.backgroundColor = [UIColor redColor];
-    label3.numberOfLines = 0;
-    [bgImage addSubview:label3];
-    
+    [self.detailView showContentWithDic:dict];
+
+     if ([CollectModel MR_findByAttribute:@"title" withValue:_detailTitle].count > 0) {
+           _collectBtn.selected = YES;
+      }
+    [self.view bringSubviewToFront:_messageLabel];
 }
 
-- (void)btnClick:(UIButton *)sender
+/**
+ *    收藏按钮的方法
+ */
+
+- (void)collectBtnClick:(UIButton *)sender
 {
-    PlayerViewController *player = [[PlayerViewController alloc] init];
-    NSURL *url = [NSURL URLWithString:_model.playUrl];
-    player.url = url;
-    player.imageUrl = _model.coverBlurred;
-    [self presentViewController:player animated:YES completion:^{
+    if (sender.selected) {
+        // 当前状态是收藏,现在执行取消操作
+        CollectModel  *model = [[CollectModel MR_findByAttribute:@"title" withValue:_detailTitle ] firstObject];
+        [model MR_deleteEntity];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        [UIView animateWithDuration:1.5 animations:^{
+            _messageLabel.text = @"取消收藏";
+            _messageLabel.alpha = 1;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:1.5 animations:^{
+                _messageLabel.alpha = 0;
+            }];
+        }];
         
-    }];
-
+    }else{
+        // 当前状态没有收藏,现在执行收藏操作
+        CollectModel *model = [CollectModel MR_createEntity];
+        model.title = _detailTitle;
+        model.category = _detailCategory;
+        model.duration = [NSString stringWithFormat:@"%@",_detailDuration];
+        model.playUrl = _detailPlayUrl;
+        model.coverForFeed = _detailCoverForFeed;
+        model.my_description = _detailDescription;
+        model.coverBlurred = _detailCoverBlurred;
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        [UIView animateWithDuration:1.5 animations:^{
+            _messageLabel.text = @"收藏成功";
+            _messageLabel.alpha = 1;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:1.5 animations:^{
+                _messageLabel.alpha = 0;
+            }];;
+        }];
+    }
+    sender.selected = !sender.selected;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+/*
+ 分享按钮按钮
+ */
+- (void)shareBtnClick:(UIButton *)sender
 {
+}
 
+- (void)swipeClick:(UISwipeGestureRecognizer *)sendr
+{
+//    [_videoController dismiss];
+}
+
+// 返回按钮并结束播放
+- (void)backBtnClick
+{
+    [_videoController dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+// 点击播放按钮
+- (void)playBtnClick
+{
+    
+    NSURL *url = [NSURL URLWithString:_detailPlayUrl];
+    [self playerUrl:url];
+}
+
+
+
+- (void)playerUrl:(NSURL *)url
+{
+    if (!self.videoController) {
+        _videoController = [[KRVideoPlayerController alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenWidth *(9.0/16.0))];
+        _videoController.delegate = self;
+        [_videoController setShouldAutoplay:YES];
+        [_videoController setFullscreen:YES animated:YES];
+        __weak typeof(self) ws = self;
+        [_videoController setDimissCompleteBlock:^{
+            ws.videoController = nil;
+        }];
+        [_videoController showInWindow];
+    }
+    _videoController.contentURL = url;
+}
+
+- (void)KRVideoPlayerIsFull:(BOOL)isFull {
+    
+    if (isFull) {
+        // 全屏播放
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES];
+    } else {
+        // 非全屏播放
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [self.navigationController setNavigationBarHidden:NO];
+    }
+}
+
+/**
+ 懒加载
+
+ @return
+ */
+- (JHDetailView *)detailView {
+    
+    
+    if (_detailView == nil) {
+        _detailView = [[JHDetailView alloc] init];
+        [self.view addSubview:_detailView];
+        KWS(ws);
+        _collectBtn = _detailView.collectionBtn;
+        _detailView.buttonBlock = ^(UIButton *sender) {
+          
+            [ws collectBtnClick:sender];
+        };
+    }
+    
+    return _detailView;
 }
 
 - (void)didReceiveMemoryWarning {
