@@ -154,6 +154,7 @@
 		BCEE875C1C9C26560031B6C0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEE875B1C9C26560031B6C0 /* DetailViewController.m */; };
 		C54B7E171E5E781100E6E816 /* JHRootPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C54B7E161E5E781100E6E816 /* JHRootPageView.m */; };
 		D04425821E5F0AE1007295C2 /* JHDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D04425811E5F0AE1007295C2 /* JHDetailView.m */; };
+		D04AB6DE1E7990ED00416C29 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04AB6DD1E7990ED00416C29 /* Reveal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,7 +381,6 @@
 		BCEE85EA1C9BDACF0031B6C0 /* EyepetizerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EyepetizerUITests.m; sourceTree = "<group>"; };
 		BCEE85EC1C9BDACF0031B6C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCEE85FF1C9BDDE80031B6C0 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		BCEE86001C9BDDF60031B6C0 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		BCEE86041C9BE8960031B6C0 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BCEE86051C9BE8960031B6C0 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BCEE86071C9BECFE0031B6C0 /* CHNetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHNetWorking.h; sourceTree = "<group>"; };
@@ -468,6 +468,8 @@
 		C54B7E161E5E781100E6E816 /* JHRootPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRootPageView.m; sourceTree = "<group>"; };
 		D04425801E5F0AE1007295C2 /* JHDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDetailView.h; sourceTree = "<group>"; };
 		D04425811E5F0AE1007295C2 /* JHDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDetailView.m; sourceTree = "<group>"; };
+		D04AB6DD1E7990ED00416C29 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		D0A65BEF1EA9D96C00B5FC2A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC4C287D1CAA7DC80078AEA9 /* CoreData.framework in Frameworks */,
+				D04AB6DE1E7990ED00416C29 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,6 +989,7 @@
 		BCEE85FB1C9BDC5E0031B6C0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				D04AB6DD1E7990ED00416C29 /* Reveal.framework */,
 				BCB385AC1CA40F8700CEBF56 /* MagicalRecord */,
 				BCAAD2E01CA37A1500116D52 /* MJRefresh */,
 				BC3181151C9EA3AF008EAE01 /* MJExtension */,
@@ -1001,10 +1005,10 @@
 		BCEE85FC1C9BDC650031B6C0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D0A65BEF1EA9D96C00B5FC2A /* PrefixHeader.pch */,
 				C54B7E151E5E781100E6E816 /* JHRootPageView.h */,
 				C54B7E161E5E781100E6E816 /* JHRootPageView.m */,
 				BCEE85FF1C9BDDE80031B6C0 /* Header.h */,
-				BCEE86001C9BDDF60031B6C0 /* PrefixHeader.pch */,
 				BCEE86071C9BECFE0031B6C0 /* CHNetWorking.h */,
 				BCEE86081C9BECFE0031B6C0 /* CHNetWorking.m */,
 				D04425801E5F0AE1007295C2 /* JHDetailView.h */,
@@ -1583,10 +1587,20 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5UB324DE42;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Eyepetizer/Libs",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Eyepetizer/Utilities/PrefixHeader.pch";
 				INFOPLIST_FILE = Eyepetizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vishow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1601,10 +1615,20 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5UB324DE42;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Eyepetizer/Libs",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Eyepetizer/Utilities/PrefixHeader.pch";
 				INFOPLIST_FILE = Eyepetizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vishow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
